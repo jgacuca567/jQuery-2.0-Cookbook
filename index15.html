@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 2:: jQuery Events</title>
+	<script src="js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	$('#title').change(function() {
+    		var titleText = "";
+    		switch($(this).val()){
+    			case "1":
+    				titleText = "This is the text for title 1";
+    				break;
+    			case "2":
+    				titleText = "This is the text for title 2";
+    				break;
+    			case "3":
+    				titleText = "This is the text for title 3";
+    				break;
+    			default:
+    				titleText = "No Title";
+    		}
+
+    	$('#main-title').html(titleText);
+    	});
+    });
+    </script>
+</head>
+<body>
+	<select id="title">
+		<option value="#">Select your title</option>
+			<option value="1">Title 1</option>
+			<option value="2">Title 2</option>
+			<option value="3">Title 3</option>
+	</select>
+	<h1 id="main-title">No Title</h1>
+</body>
+</html>
