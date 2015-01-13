@@ -106,8 +106,14 @@
     				addErrorData($(input), "This field can only contain numbers");
     				isError = true;
     			}
+    			/*Checking whether a credit card has been inserted*/
     			if ($(input).hasClass('credit-card') && !validateCreditCard($(input).val())) {
     				addErrorData($(input), "Invalid credit card number");
+    				isError = true;
+    			}
+    			/*Checking whether a date value has been inserted*/
+    			if ($(input).hasClass('date') && !validateDate($(input).val())) {
+    				addErrorData($(input), "Invalid date provided");
     				isError = true;
     			}
     		}
@@ -135,6 +141,28 @@
    		}
    	return true;
 	}
+
+	function validateDate(value) {
+		if (value != "") {
+			if (/^\d{2}([.\/-])\d{2}\1\d{4}$/.test(value)) {
+         		// Remove leading zeros
+         		value = value.replace(/0*(\d*)/gi,"$1");
+         		var dateValues = value.split(/[\.|\/|-]/);
+         		// Correct the month value as month index starts at 0 now 1 (e.g. 0 = Jan, 1 = Feb)
+         		dateValues[1]--;
+         		var date = new Date(dateValues[2], dateValues[1], dateValues[0]);
+         		if (date.getDate() == dateValues[0] && date.getMonth() == dateValues[1] && date.getFullYear() == dateValues[2]) {
+            		return true;
+         		}
+      		}
+    	return false;
+		}
+      	else {
+      		return true;
+   		}
+	}
+
+		
 
     function addErrorData(element, error){
     	element.parent().addClass('error');
