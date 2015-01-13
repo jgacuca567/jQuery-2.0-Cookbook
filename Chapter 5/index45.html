@@ -90,6 +90,7 @@
     		/* Prevent form submission */
     		event.preventDefault();
     		var inputs = $('input');
+    		doValidation(input);
     		var isError = false;
     		//Remove old errors
     		$('.input-frame').removeClass('error');
@@ -122,11 +123,14 @@
     				isError = true;
     			}
     		}
-    		if (isError === false) {
+    		if ($('error-data').length == 0) {
     			//No errors, submit the form
     			$('#webForm').submit();
     		}
-    	});  		
+    	}); 
+    	$('input').on('keyup', function() {
+    		doValidation($(this));
+    	}); 		
     });
     	
     function validateRequired(value){
@@ -169,7 +173,7 @@
 
 	function validateEmail(value) {
 		if (value != "") {
-      		return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i.test(value);
+      		return '/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i.test(value)';
    		}
    		return true;
 	}
