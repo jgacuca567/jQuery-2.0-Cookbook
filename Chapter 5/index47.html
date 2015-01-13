@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 5 Form Handling</title>
+		<style>
+		@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+		body{
+			background-color: #FFF;
+			font-family: 'Ubuntu', sans-serif;
+		}
+		form{
+			width: 500px;
+			padding: 20px;
+			background-color: #333;
+			border-radius: 5px;
+			margin: 10px auto auto auto;
+			color: #747474;
+			border: solid 2px #000;
+		}
+		form label{
+			font-size: 14px;
+			line-height: 30px;
+			width: 27%;
+			display: inline-block;
+			text-align: right;
+		}
+		.input-frame{
+			clear: both;
+			margin-bottom: 25px;
+			position: relative;
+		}
+		form input{
+			height: 30px;
+			width: 330px;
+			margin-left: 10px;
+			background-color: #191919;
+			border: solid 1px #404040;
+			padding-left: 10px;
+			color: #DB7400;
+		}
+		form input:hover{
+			background-color: #262626;
+		}
+		form input:focus{
+			border-color: #DB7400;
+		}
+		form .header{
+			margin: -20px -20px 25px 20px;
+			padding: 10px 10px 10px 20px;
+			position: relative;
+			background-color: #DB7400;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+		}
+		form .header h1{
+			line-height: 50px;
+			margin: 0px;
+			padding: 0px;
+			color: #FFF;
+			font-weight: normal;
+		}
+		.actions{
+			text-align: right;
+		}
+		.submit-btn{
+			background-color: #DB7400;
+			border: solid 1px #000;
+			border-radius: 5px;
+			color: #FFF;
+			padding: 10px 20px 10px 20px;
+			cursor: pointer;
+		}
+	</style>
+	<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	$('.username').on('keypress', function(event) {
+    		/*Get key press character code*/
+    		var key = String.fromCharCode(event.which);
+    		if (/[^a-zA-Z\d\s:]/.test(key)) {
+    			event.preventDefault();
+    			return false;
+    		}
+    	});
+    });
+    </script>
+</head>
+<body>
+	<form method="POST" id="webForm">
+		<div class="header">
+			<h1>Register</h1>
+		</div>
+		<div class="input-frame">
+			<label for="username">Username</label>
+			<input name="username" type="text" id="username" class="username">
+		</div>
+		<div class="input-frame">
+			<label for="password">Password</label>
+			<input name="password" type="text" id="password" class="required">
+		</div>
+		<div class="actions">
+			<button class="submit-btn">Submit</button>
+		</div>
+	</form>
+</body>
+</html>
