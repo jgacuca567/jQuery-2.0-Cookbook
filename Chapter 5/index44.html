@@ -116,6 +116,11 @@
     				addErrorData($(input), "Invalid date provided");
     				isError = true;
     			}
+    			/*Checking whether the email is valid*/
+    			if ($(input).hasClass('email') && !validateEmail($(input).val())) {
+    				addErrorData($(input), "Invalid email address provided");
+    				isError = true;
+    			}
     		}
     		if (isError === false) {
     			//No errors, submit the form
@@ -162,8 +167,13 @@
    		}
 	}
 
-		
-
+	function validateEmail(value) {
+		if (value != "") {
+      		return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i.test(value);
+   		}
+   		return true;
+	}
+   
     function addErrorData(element, error){
     	element.parent().addClass('error');
     	element.after("<div class='error-data'>" + error + "</div>");
@@ -185,7 +195,7 @@
 			</div>
 			<div class="input-frame">
 			<label for="email">Email:</label>
-			<input type="text" id="email" name="email" class="required">
+			<input type="text" id="email" name="email" class="required email">
 			</div>
 			<div class="input-frame">
 			<label for="number:">Telephone:</label>
