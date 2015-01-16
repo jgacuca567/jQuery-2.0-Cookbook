@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 6</title>
+	<style>
+		.list-container{
+			width: 800px;
+			margin: 20px auto auto auto;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		ul li{
+			line-height: 25px;
+			margin: 5px 0 5px 0;
+			position: relative;
+			padding: 0 0 0 5px;
+			color: #666;
+		}
+		ul li a{
+			display: block;
+			background-color: #333;
+			padding: 0 0 0 30px;
+			margin-left: -5px;
+			text-decoration: none;
+			color: #FFF;
+		}
+		.arrow{
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			left: 5px;
+			top: 2px;
+		}
+		.right-arrow{
+			width: 0;
+			height: 0;
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid transparent;
+			border-left: 10px solid white;
+		}
+		.down-arrow{
+			width: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-top: 10px solid white;
+			top: 7px;
+		}
+		.list-bg{
+			background-color: #F1F1F1;
+		}
+	</style>
+	<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
+	<script>
+var tree = [
+    {
+        name: "Fastolph Bolger",
+        children: []
+    },
+    {
+        name: "Laura Grubb",
+        children: [
+            {
+                name: "Bungo",
+                children: [
+                    {
+                        name: "Bilbo",
+                        children: []
+                    }
+                ]
+            },
+            {
+                name: "Belba",
+                children: []
+            },
+            {
+                name: "Longo",
+                children: [
+                    {
+                        name: "Otho Sackville-Baggins",
+                        children: [
+                            {
+                                name: "Lotho",
+                                children: []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        name: "Ponto",
+        children: [
+            {
+                name: "Rosa",
+                children: [
+                    {
+                        name: "Peregrin Took",
+                        children: []
+                    }
+                ]
+            }
+        ]
+    }
+];
+$(function(){
+    /*Custom dropdown*/
+    var list = createList(tree, 1);
+    $('.list-container').html(list);
+    $(document).on('click', '.show-children', function(){
+        $(this).next('ul').slideToggle();
+        $(this).find('.right-arrow').toggleClass('down-arrow');
+    });
+});
+
+function createList(children, level) {
+    var style = "margin-left: " + (10 * level) + "px;"
+    if (level > 1) {
+        style += "display: none;";
+    }
+    var list = "<ul style='" + style + "'>";
+    level++;
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].children.length > 0) {
+            list += "<li><a href='javascript:void(0)' class='show-children'><div class='arrow right-arrow'></div> " + children[i].name + "</a>";
+            list += createList(children[i].children, level);
+            list += "</li>";
+        } else {
+            list += "<li class='list-bg'>" + children[i].name + "</li>";
+        }
+    }
+    list += "</ul>";
+    return list;
+}
+    </script>
+</head>
+<body>
+	<div class="container">
+		<div class="list-container"></div>
+	</div>
+</body>
+</html>
