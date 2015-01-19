@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 7</title>
+	<style>
+		.slider-frame{
+			width: 600px;
+			height: 250px;
+			margin: 50px auto auto auto;
+			overflow: hidden;
+			position: relative;
+		}
+		.slider-content{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			position: relative;
+		}
+		.slider-content li{
+			float: left;
+			width: 600px;
+			height: 250px;
+			background-color: #E1E1E1;
+		}
+		.slider-content li h1{
+			margin: 10px;
+		}
+		.slider-content li p{
+			margin: 10px;
+		}
+		.slider-nav{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			height: 35px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			text-align: center;
+		}
+		.slider-nav li{
+			display: inline-block;
+			margin-right: 5px;
+		}
+		.slider-nav li a{
+			display: block;
+			color: #FFF;
+			text-decoration: none;
+			border-radius: 30px;
+			background-color: #333;
+			width: 25px;
+			height: 25px;
+			text-align: center;
+			line-height: 25px;
+		}
+		.slider-nav li a:hover{
+			background-color: #000;
+		}
+		.slider-nav li a.active{
+			background-color: #FFF;
+			color: #333;
+		}
+	</style>
+	<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	var _sliderContent = $('.slider-content li');
+    	for (var i = 0; i < _sliderContent.length; i++) {
+    		$('.slider-nav').append("<li><a href='#" + i + "' " + ((i == 0) ? "class='active'" : "") + ">" + (i + 1) + "</a></li>");
+    	}
+    	$('.slider-content').width((600 * _sliderContent.length) + "px");
+    	$(document).on('click', '.slider-nav li a ', function() {
+    		var index = this.hash.replace("#", "");
+    		$(".slider-nav li a").removeClass('active');
+    		$(this).addClass('active');
+    		$('.slider-content').animate({
+    			left: -(index * 600) + "px"
+    		});
+
+    	});
+    });
+
+    var count = 0;
+    setInterval(function(){
+    	if (count >= _sliderContent.length) count = 0;
+    		$('.slider-content').animate({
+    			left: -(count * 600) + "px"
+    		});
+    		$('.slider-nav li a').removeClass('active');
+    		$('.slider-nav li').find("a[href='#" + count + "']").addClass('active');
+    		count++;
+    }, 3000);
+    </script>
+</head>
+<body>
+	<div class="slider-frame">
+		<ul class="slider-content">
+			<li>
+				<h1>Section 1</h1>
+				<p>Some content for section one</p>
+			</li>
+			<li>
+				<h1>Section 2</h1>
+				<p>Some content for section two</p>
+			</li>
+			<li>
+				<h1>Section 3</h1>
+				<p>Some content for section three</p>
+			</li>
+			<li>
+				<h1>Section 4</h1>
+				<p>Some content for section four</p>
+			</li>
+		</ul>
+		<ul class="slider-nav"></ul>
+	</div>
+</body>
+</html>
