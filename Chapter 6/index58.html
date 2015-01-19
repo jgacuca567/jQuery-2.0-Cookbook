@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 6</title>
+	<style>
+		.modal-backdrop{
+			background-color: rgba(0, 0, 0, 0.61);
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			display: none;
+		}
+		.modal {
+    width: 500px;
+    position: absolute;
+    top: 25%;
+    z-index: 1020;
+    background-color: #FFF;
+    border-radius: 6px;
+    display: none;
+}
+.modal-header {
+    background-color: #333;
+    color: #FFF;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.modal-header h3 {
+    margin: 0;
+    padding: 0 10px 0 10px;
+    line-height: 40px;
+}
+.modal-header h3 .close-modal {
+    float: right;
+    text-decoration: none;
+    color: #FFF;
+}
+.modal-footer {
+    background-color: #F1F1F1;
+    padding: 0 10px 0 10px;
+    line-height: 40px;
+    text-align: right;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top: solid 1px #CCC;
+}
+.modal-body {
+    padding: 0 10px 0 10px;
+}
+	</style>
+	<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    modalPosition();
+    $(window).resize(function(){
+        modalPosition();
+    });
+    $('.openModal').click(function(){
+        $('.modal, .modal-backdrop').fadeIn('fast');
+    });
+    $('.close-modal').click(function(){
+        $('.modal, .modal-backdrop').fadeOut('fast');
+    });
+    $('.draggable').on('mousedown', function() {
+        $(this).addClass('dragging');
+    }).on('mousemove mouseout', function(event) {
+        if ($(this).hasClass('dragging')) {
+            //Don't allow the draggable element to go over the parent's left and right
+            var left = (event.pageX -($(this).width() / 2));
+            if (left > ($(window).width() - $(this).width())) {
+                left = ($(window).width() - $(this).width())
+            } else if(left <= 0){
+                left = 0;   
+            }
+
+            //Don't allow the draggable element to go over the parent's top and bottom
+            var top = (event.pageY - ($(this).height() / 2));
+            if (top > ($(window).height() - $(this).height())) {
+                top = ($(window).height() - $(this).height());
+            } else if (top <= 0) {
+                top = 0;
+            }
+
+            //Set new position
+            $(this).css({
+                top: top + "px",
+                left: left + "px",
+                position: 'absolute'
+            });
+        }
+    }).on('mouseup', function() {
+        $(this).removeClass('dragging');
+    });
+});
+function modalPosition() {
+    var width = $('.modal').width();
+    var pageWidth = $(window).width();
+    var x = (pageWidth / 2) - (width / 2);
+    $('.modal').css({left: x + "px"});
+}
+    </script>
+</head>
+<body>
+	<button class="openModal">Open Modal</button>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit aliquid itaque repellat pariatur sint, incidunt quibusdam et ex soluta autem maiores harum, excepturi. Voluptatibus officiis earum omnis, aperiam quo harum.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit necessitatibus, quibusdam, laudantium delectus ad harum autem possimus! Eum, impedit, qui recusandae id sit, amet praesentium debitis magnam harum, facere deserunt.</p>
+	<div class="modal draggable">
+		<div class="modal-header">
+			<h3>Modal Header Text <a href="#" class="close-modal">&times;</a></h3>
+		</div>
+		<div class="modal-body">
+			<p>This is some modal content</p>
+		</div>
+		<div class="modal-footer"><button class="modalOK close-modal">OK</button></div>
+	</div>
+	<div class="modal-backdrop"></div>
+</body>
+</html>
