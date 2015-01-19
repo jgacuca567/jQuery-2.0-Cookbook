@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 6</title>
+	<style>
+		.container {
+    width: 800px;
+    margin: 20px auto auto auto;
+}
+.accordion section a.header {
+    display: block;
+    line-height: 30px;
+    /* fallback */
+    background-color: #333333;
+    background-repeat: repeat-x;
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#666666), to(#333333));
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #666666, #333333);
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #666666, #333333);
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #666666, #333333);
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #666666, #333333);
+    padding: 0 10px 0 30px;
+    position: relative;
+    text-decoration: none;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+.accordion section .content {
+    padding: 10px;
+    margin: 0 3px 0 3px;
+    background-color: #F1F1F1;
+    color: #333333;
+}
+
+.accordion section .content p {
+    margin-top: 0;
+}
+
+.arrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 10px;
+    top: 5px;
+}
+.right-arrow {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid white;
+}
+.down-arrow {
+    width: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+    top: 10px;
+    left: 6px;
+}
+	</style>
+	<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
+    <script>
+    $(function(){
+        /*Adding a custom accordion*/
+    //Hide all accordion content except the first one
+    $('.accordion section:not(:first-child) .content').hide();
+    $(document).on("click", ".accordion a.header", function(){
+        var _contents = $('.accordion section .content');
+        var _currentContent = $(this).parent().find('.content');
+        for (var i = 0; i < _contents.length; i++) {
+            var content = $(_contents[i]);
+            //Only slide the element up if its not the currently selected element
+            if (content[0] != _currentContent[0]) {
+                content.slideUp();
+                content.parent().find('.right-arrow').removeClass('down-arrow');
+            }
+        }
+        _currentContent.slideDown();
+        _currentContent.parent().find('.right-arrow').addClass('down-arrow');
+    });
+});
+    </script>
+</head>
+<body>
+	<div class="container">
+    <div class="accordion">
+        <section>
+            <a href="#" class="header"><div class='arrow right-arrow down-arrow'></div> Section 1</a>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </section>
+        <section>
+            <a href="#" class="header"><div class='arrow right-arrow'></div> Section 2</a>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </section>
+        <section>
+            <a href="#" class="header"><div class='arrow right-arrow'></div> Section 3</a>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>
