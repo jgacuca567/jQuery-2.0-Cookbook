@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Chapter 6</title>
+		<style>
+			.container{
+				width: 800px;
+				margin: 20px auto auto auto;
+			}
+			.tabs .tab-nav {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				background-color: #E1E1E1;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+			}
+		.tabs .tab-nav li {
+		display: inline-block;
+		}
+		.tabs .tab-nav li a{
+		display: block;
+		text-decoration: none;
+		text-align: center;
+		line-height: 50px;
+		color: #FFF;
+		background-color: #333;
+		padding: 0 20px 0 20px;
+		border-right: solid 1px #5c5c5c;
+		}
+		.tabs .tab-nav li a:hover, .tabs .tab-nav li a.active {
+		background-color: #5c5c5c;
+		}
+		.tabs .tab-nav li:first-child a {
+		border-top-left-radius: 5px;
+		}
+		.tabs .tab-nav li:last-child a {
+		border-top-right-radius: 5px;
+		border-right: none;
+		}
+		.tabs .section {
+		padding: 10px;
+		background-color: #F1F1F1;
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		}
+		.tabs .section p {
+		margin-top: 0;
+		}
+		.tabs .section:not(:first-child) {
+		display: none;
+		}
+		</style>
+		<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
+		<script>
+		$(function(){
+			$(document).on('click', '.tabs .tab-nav a', function() {
+				var contentId = this.hash;
+				$('.tab-nav a').removeClass('active');
+				$(this).addClass('active');
+				$('.tab-content .section').hide();
+				$(contentId).fadeIn();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="tabs">
+				<ul class="tab-nav">
+					<li><a href="#section1" class="active">Section 1</a></li><li><a href="#section2">Section 2</a></li><li><a href="#section3">Section 3</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="section" id="section1">
+						<p><strong>Section 1 content...</strong></p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+					<div class="section" id="section2">
+						<p><strong>Section 2 content...</strong></p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+					<div class="section" id="section3">
+						<p><strong>Section 3 content...</strong></p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
