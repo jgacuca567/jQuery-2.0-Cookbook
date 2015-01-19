@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 7</title>
+	<style>
+		body{
+			background-color: #333;
+		}
+		.container{
+			width:  600px;
+			height: 600px;
+			margin: 50px auto auto auto;
+		}
+		.photos{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.photos li{
+			display: inline-block;
+			width: 290px;
+			height: 250px;
+			background-color: #E1E1E1;
+			margin: 0 5px 5px 0;
+			overflow: hidden;
+			position: relative;
+			cursor: pointer;
+		}
+		.photos li img{
+			top: -50%;
+			left: -50%;
+			position: absolute;
+			opacity: 0.5;
+		}
+	</style>
+	<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
+    <script>
+    var images = [];
+    $(function(){
+    	$(document).on('mouseover', '.photos li', function() {
+    		var _image = $(this).find('img');
+    		_image.finish();
+    		images[$(this).index()] = {
+    			width: _image.width(),
+    			height: _image.height()
+    		};
+    		_image.animate({
+    			width: '290px',
+    			height: '250px',
+    			top: 0,
+    			left: 0,
+    			opacity: 1.0
+    		});
+    	}).on('mouseout', '.photos li', function() {
+    		var _image = $(this).find('img');
+    		_image.finish();
+    		_image.animate({
+    			width: images[$(this).index()].width + "px",
+    			height: images[$(this).index()].height + "px",
+    			top: '-50%',
+    			left: '-50%',
+    			opacity: 0.5
+    		});
+    	});
+    });
+    </script>
+</head>
+<body>
+	<div class="container">
+		<ul class="photos">
+			<li><img src="recipe-2-1.jpg" alt="Countryside 1" /></li>
+			<li><img src="recipe-2-2.jpg" alt="Countryside 2" /></li>
+			<li><img src="recipe-2-3.jpg" alt="Countryside 3" /></li>
+			<li><img src="recipe-2-4.jpg" alt="Countryside 4" /></li>
+		</ul>
+	</div>
+</body>
+</html>
