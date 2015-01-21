@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 8</title>
+	<script src="/../jquery.min.js"></script>
+    <script src="jquerytooltip.js"></script>
+    <script>
+    $(function(){
+        $('.hasTooltip').tooltip();
+    });
+    </script>
+</head>
+<body>
+    <p><input type="text" class="hasTooltip" data-title="This is a tooltip on an input box"></p>
+    <p><a href="http://proxy.montgomerylibrary.org:2107/" target="_blank" class="hasTooltip" title="External link to http://proxy.montgomerylibrary.org:2107/">Google.com</a></p>
+    <button class="hasTooltip" data-title="A button with a tooltip">Button</button>
+</body>
+</html>

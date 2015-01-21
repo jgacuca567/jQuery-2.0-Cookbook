@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 8</title>
+    <style>
+       @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400);
+        body{
+            background-color: #F1F1F1;
+            font-family: 'Source Sans Pro', sans-serif !important;
+        }
+        h1, h2, h3{
+            font-weight: 300;
+            margin: 0;
+        }
+        .container{
+            width: 800px;
+            margin: 50px auto auto auto;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border: solid 1px #E1E1E1;
+        }
+        .container h3{
+            line-height: 40px;
+        }
+        .container .image-preview {
+            border: solid 1px #E1E1E1;
+            width: 800px;
+            height: 600px;
+            overflow: hidden;
+            margin: auto;
+            position: relative;
+        }
+        .container .image-preview .preview-msg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #F1F1F1;
+            text-align: center;
+            font-size: 22px;
+            line-height: 600px;
+            font-weight: 300;
+            z-index: 1;
+        }
+        #croppable-image{
+            position: relative:
+               z-index: 2;
+        }
+        .container .progress-bar{
+            height: 30px;
+            border: solid 1px #E1E1E1;
+        }
+        .container.progress-bar .inner{
+            height: 30px;
+            width: 0;
+            background-color: #54ee86;
+        }
+        .container .actions{
+            text-align: right;
+            margin-top: 10px;
+        }
+        .container .actions .upload-button{
+            height: 30px;
+            width: 60px;
+        }
+        .crop-frame{
+            position: relative;
+            margin: auto;
+        }
+        .selection-layer{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+        }
+        .selection-outline{
+            border: dotted 1px #000000;
+            z-index: 999;
+        }
+        .selection-outline:hover, .selection-outline:active{
+            cursor: move;
+        }
+        .overlay-layer{
+            background-color: rgba(255, 255, 255, 0.60);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+        }
+    </style>
+	<script src="/../jquery.min.js"></script>
+    <script src="jquery.imagecrop.js"></script>
+    <script>
+    $(function(){
+       var _selectedFile;
+        $(document).on("change", "#selectedImage", function(){
+            var reader = new FileReader();
+            var files = $(this).prop("files");
+            if(files.length > 0){
+                _selectedFile = files[0];
+                reader.onload = function(){
+                    var image = new Image;
+                    image.src = this.result;
+                    if(image.width > 800 || image.height > 600){
+                        alert("Image cannot be larger than 800 * 600");
+                    } else{
+                        $('.preview-msg').hide();
+                        $('#croppable-image').prop("src", this.result).fadeIn().imagecrop();
+                    }
+                };
+                reader.readAsDataURL(_selectedFile);
+            }
+        });
+        $(document).on("click", ".upload-button", function(){
+            var _selectedImage = $('#croppable-image');
+            if(_selectedImage.data("selection-width") > 0 && _selectedImage.data("selection-height") > 0){
+                var data = new FormData();
+                data.append("image", _selectedFile);
+                data.append("selection-width", _selectedImage.data("selection-width"));
+                data.append("selection-height", _selectedImage.data("selection-height"));
+                data.append("selection-left", _selectedImage.data("selection-x"));
+                data.append("selection-top", _selectedImage.data("selection-y"));
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "upload.php");
+                xhr.onprogress = function(event){
+                    var percent = (event.loaded / event.total * 100);
+                    $('.progress-bar .inner').width(percent + "%");
+                }
+                xhr.onload = function(){
+                    var response = JSON.parse(this.response);
+                    if(response.success = false){
+                        alert(response.error);
+                    }
+                }
+                xhr.send(data);
+            } else{
+                alert("Please crop the image before upload");
+            }
+        })
+    });
+    </script>
+</head>
+<body>
+   <div class="container">
+        <h3>#1: Select Image</h3>
+        <input type="file" id="selectedImage" />
+        <h3>#2: Crop Image</h3>
+        <div class="image-preview">
+            <div class="preview-msg">Select and image to upload</div>
+            <img id="croppable-image" style="display: none;" />
+        </div>
+        <h3>#3: Upload</h3>
+        <div class="progress-bar"><div class="inner"></div></div>
+        <div class="actions">
+            <button class="upload-button">Upload</button>
+        </div>
+    </div>
+</body>
+</html>
