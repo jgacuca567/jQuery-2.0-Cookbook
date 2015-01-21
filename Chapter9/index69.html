@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 9</title>
+	<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+   <link rel="stylesheet" href="css/jquery-ui.css">
+    <script>
+    $(function(){
+    	//Default buttons
+    	$('a, button, input[type=submit]').button();
+    	//Button options
+    	$('#button4').button('option', 'disabled', true);
+    	$('#button5').button({label: 'Button 5 with custom label'});
+    	$('#button6').button('option', 'icons', {primary: 'ui-icon-arrowthick-1-e', secondary: 'ui-icon-circle-arrow-e'});
+    	//Button sets
+    	$('.buttonSet1').buttonset();
+    	$('.buttonSet2').buttonset();
+    	//Button events
+    	$('.enableDisable').button().click(function() {
+    		var _button4 = $('.button4');
+    		if (_button4.button('option', 'disabled')) {
+    			_button4.button('option', 'disabled', false);
+    		} else {
+    			_button4.button('option', 'disabled', true);
+    		}
+    	});
+    });
+    </script>
+</head>
+<body>
+	<h3>Default Buttons: a, button and input</h3>
+	<a href="#">Button 1</a>
+	<button>Button 2</button>
+	<input type="submit" name="button3" value="Button 3">
+	<h3>Button options: Disabled, Custom Label and icons</h3>
+	<button class="button4">Button 4: Disabled</button>
+	<button class="button5">Button 5</button>
+	<button class="button6">Button 6 with icons</button>
+	<h3>Button Sets: Radio and Checkbox's</h3>
+	<div class="buttonset1">
+		<button>One</button>
+		<button>Two</button>
+		<button>Three</button>
+	</div>
+	<div class="buttonset2">
+		<input type="checkbox" id="check1" /><label for="check1">Check 1</label>
+		<input type="checkbox" id="check2" /><label for="check2">Check 2</label>
+		<input type="checkbox" id="check3" /><label for="check3">Check 3</label>
+	</div>
+	<h3>Buttons with events</h3>
+	<button class="enableDisable">Enable/Disable</button>
+</body>
+</html>
