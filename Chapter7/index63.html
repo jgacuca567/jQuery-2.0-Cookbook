@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 6</title>
+    <style>
+        body{
+            background-color: #333;
+        }
+        .background{
+            background: url(recipe-4-1.jpg)  no-repeat center center fixed;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .text-frame{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .text-inner{
+            width: 600px;
+            margin: 15% auto auto auto;
+            background-color: rgba(0, 0, 0, 0.78);
+            padding: 20px;
+            color: #E1E1E1;
+            border-radius: 5px;
+        }
+        .text-inner h1{
+            margin: 0;
+            padding: 0;
+        }
+        .text-inner p{
+            font-size: 22px;
+            line-height: 30px;
+            margin: 5px 0 5px 0;
+            color: #CCC;
+        }
+    </style>
+	<script src="/../jquery.min.js"></script>
+    <script>
+        var _images = [
+            'recipe-4-1.jpg',
+            'recipe-4-2.jpg',
+            'recipe-4-3.jpg'
+        ];
+        var index = 1;
+  $(function(){
+   setInterval(function(){
+      if (index >= _images.length) index = 0;
+      $('.background').animate({
+         opacity: 0
+      }, 1500, function(){
+         $(this).css({
+            'background-image': "url('" + _images[index] + "')"
+         }).animate({
+            opacity: 1
+         }, 1500);
+         index++;
+      });
+   }, 6000);
+});
+    </script>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="text-frame">
+        <div class="text-inner">
+            <h1>BACKGROUND IMAGE ANIMATION</h1>
+            <p>This recipe shows you how to alternate the background image of an element using jQuery Animations.</p>
+        </div>
+    </div>
+</body>
+</html>
+
