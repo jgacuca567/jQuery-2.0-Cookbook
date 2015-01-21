@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 10</title>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
+<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
+<script src="https:////ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+<script>
+
+</script>
+</head>
+<body>
+	<div data-role="page">
+		<header data-role="header">
+			<h1>Chapter 10:: Recipe 6 Lists</h1>
+		</header>
+		<div data-role="content">
+			<p>This page contains a selection of list examples for you to reuse at your convinience</p>
+			<h2>Basic linked list</h2>
+			<ul data-role="list-view">
+				<li><a href="#">Linked item 1</a></li>
+				<li><a href="#">Linked item 2</a></li>
+				<li><a href="#">Linked item 3</a></li>
+			</ul>
+			<br>
+			<h2>Nested List</h2>
+			<p>Please note that the sub-list will not work if you have opened index78.html directly in a web browser. For the sub-list navigation to work you must serve this HTML file from a web server. i.e http://localhost/jqUeryCookbook/index78.html</p>
+			<ul data-role="listview">
+				<li><a href="#">Top Level Item 1</a></li>
+				<li><a href="#">Top Level Item 2</a></li>
+				<li><a href="#">Top Level Item 3 - With Sub-Level</a>
+					<ul data-role="listview">
+						<li><a href="#">Second Level Item 1</a></li>
+						<li><a href="#">Second Level Item 2</a></li>
+					</ul>
+				</li>
+			</ul>
+			<br>
+			<h2>List items with buttons</h2>
+			<ul data-role="list-view" data-split-icon="delete">
+				<li><a href="#">Jane Doe</a><a href="#"></a></li>
+				<li><a href="#">John Doe</a><a href="#"></a></li>
+				<li><a href="#">James Matthews</a><a href="#"></a></li>
+			</ul>
+			<h2>List with filter</h2>
+			<ul data-role="listview" data-filter="true">
+				<li><a href="#">Cat</a></li>
+				<li><a href="#">Dog</a></li>
+				<li><a href="#">Lizard</a></li>
+				<li><a href="#">Rabbit</a></li>
+			</ul>
+		</div>
+		<footer data-role="footer">
+			<h4>The HTML5 sms: attribute allows you to open the default SMS client on click</h4>
+		</footer>
+	</div>
+</body>
+</html>
