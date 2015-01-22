@@ -12,7 +12,7 @@
 		$response["errors"]["username"] = "Username must be between 3 and 64 characters in length";
 	} else{
 		$query = "SELECT `id` FROM `user` WHERE `username` = ? LIMIT 1 ";
-		$stmt = $mysqli->stmt_init();
+		$stmt = $dbcon->stmt_init();
 		if ($stmt->prepare($query)) {
 			$stmt->bind_param("s", $username);
 			if ($stmt->execute()) {
@@ -36,7 +36,7 @@
 	}
 	if (empty($response["errors"])) {
 		$query = "INSERT INTO `user` (`username`, `password`) VALUES (?, ?)";
-		$stmt = $mysqli->stmt_init();
+		$stmt = $dbcon->stmt_init();
 		if ($stmt->prepare($query)) {
 			$password = crypt($password, $pwsalt);
 			$stmt->bind_param("ss", $username, $password);
@@ -51,7 +51,7 @@
 		}
 
 	}
-	$mysqli->close();
+	$dbcon->close();
 	header("Content-Type: application/json; charset=UTF-8");
 	echo json_encode($response);
 ?>
