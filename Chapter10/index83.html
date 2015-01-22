@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 10</title>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
+<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
+<script src="https:////ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+<script>
+    $(function(){
+    var _currentNotes = $('#current-notes');
+    $('#register-account').click(function(){
+        $('.input-error').remove();
+        var data = {
+            username: $('#register-username').val(),
+            password: $('#register-password').val(),
+            passwordagain: $('#register-passwordagain').val()
+        };
+        $.ajax({
+            type: 'POST',
+            url: 'register.php',
+            data: data,
+            beforeSend: function() {
+                $.mobile.loading('show');
+            },
+            success: function(data) {
+                $.mobile.loading('hide');
+                if (data.success) {
+                    $.mobile.showPageLoadingMsg("b", "Registration successful! You may now login.", true);
+                } else {
+                    $.each(data.errors, function(key, value){
+                        $('#register-' + key).parent().after("<div class='input-error'>" + value + "</div>");
+                    });
+                }
+            }
+        });
+    });
+    $('#login-account').click(function(){
+        var data = {
+            username: $('#login-username').val(),
+            password: $('#login-password').val()
+        };
+        $.ajax({
+            type: 'POST',
+            url: 'login.php',
+            data: data,
+            beforeSend: function() {
+                $.mobile.loading('show');
+            },
+            success: function(data) {
+                $.mobile.loading('hide');
+                if (data.success) {
+                    $.mobile.showPageLoadingMsg("b", "Login Successful", true);
+                    localStorage.setItem("user", JSON.stringify(data.user));
+                    $.mobile.changePage("#member");
+                } else {
+                    $.mobile.showPageLoadingMsg("b", data.error, true);
+                }
+            }
+        });
+    });
+    $('#logout').click(function(){
+        $.ajax({
+            type: 'POST',
+            url: 'logout.php',
+            beforeSend: function() {
+                $.mobile.loading('show');
+            },
+            success: function(data) {
+                $.mobile.loading('hide');
+                if (data.success) {
+                    localStorage.removeItem("user");
+                    _currentNotes.data("initialized", false);
+                    $.mobile.changePage("#home");
+                } else {
+                    $.mobile.showPageLoadingMsg("b", data.error, true);
+                }
+            }
+        });
+    });
+    $(document).bind("pagebeforechange", function(e, data) {
+        if (typeof data.toPage === "string") {
+            var urlObject = $.mobile.path.parseUrl(data.toPage);
+            if (urlObject.hash.search(/^#member/) !== -1) {
+                var user = getUser();
+                if (user === false) {
+                    e.preventDefault();
+                    $.mobile.showPageLoadingMsg("b", "You must be logged in to access this page", true);
+                    setTimeout(function(){
+                        $.mobile.hidePageLoadingMsg();
+                        $.mobile.changePage("#home");
+                    }, 1500);
+                } else {
+                    $('.username').html(user.username);
+                }
+            } else if(urlObject.hash.search(/^#notes/) !== -1) {
+                if (_currentNotes.data("initialized") != true) {
+                    e.preventDefault();
+                    _currentNotes.empty();
+                    _currentNotes.data("initialized", true);
+                    $.ajax({
+                        type: 'GET',
+                        url: 'getNotes.php',
+                        beforeSend: function() {
+                            $.mobile.loading('show');
+                        },
+                        success: function(data) {
+                            $.mobile.loading('hide');
+                            if (data.success) {
+                                for (var i = 0; i < data.notes.length; i++) {
+                                    _currentNotes.append(createNoteItem(data.notes[i]));
+                                }
+                                //If the list view has already been initialized then we need to refresh it
+                                if (_currentNotes.hasClass('ui-listview')) {
+                                    _currentNotes.listview("refresh");
+                                }
+                                $.mobile.changePage("#notes");
+                            } else {
+                                alert(data.error);
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    });
+    $('#save-new-note').click(function(){
+        $('#note-error').hide();
+        var _text = $('#note-text');
+        $.ajax({
+            type: 'POST',
+            url: 'addNote.php',
+            data: {
+                'text': _text.val()
+            },
+            beforeSend: function() {
+                $.mobile.loading('show');
+            },
+            success: function(data) {
+                $.mobile.loading('hide');
+                if (data.success) {
+                    _text.val("");
+                    _currentNotes.prepend(createNoteItem(data.note));
+                    //If the list view has already been initialized then we need to refresh it
+                    if (_currentNotes.hasClass('ui-listview')) {
+                        _currentNotes.listview('refresh');
+                    }
+                    $.mobile.changePage("#notes");
+                } else {
+                    $('#note-error').html(data.error).fadeIn();
+                }
+            }
+        });
+    });
+    $(document).on('click', '.delete-note', function(){
+        var _listItem = $(this).closest('li');
+        var id = _listItem.data("id");
+        var response = confirm("Are you sure you want to delete this note?");
+        if (response) {
+            $.ajax({
+                type: 'POST',
+                url: 'deleteNote.php',
+                data: {
+                    'id': id
+                },
+                beforeSend: function() {
+                    $.mobile.loading('show');
+                },
+                success: function(data) {
+                    $.mobile.loading('hide');
+                    if (data.success) {
+                        _listItem.remove();
+                        _currentNotes.listview("refresh");
+                    } else {
+                        alert(data.error);
+                    }
+                }
+            });
+        }
+    });
+});
+
+function getUser() {
+    var user = localStorage.getItem("user");
+    if (user == null) {
+        return false;
+    } else {
+        return JSON.parse(user);
+    }
+}
+
+function createNoteItem(note) {
+    return "<li data-id='" + note.id + "'><a href='javascript:void(0);' class='delete-note'>" + note.text + "</a></li>";
+}
+    </script>
+</head>
+    <body>
+        <div data-role="page" id="member">
+    <div data-role="header" data-theme="b">
+        <h1><a href="#home" data-role="button" data-icon="home" data-iconpos="notext" data-inline="true"></a> Member's Page</h1>
+    </div>
+    <div data-role="content">
+        <p>Welcome <strong><span class="username"></span></strong>, what would you like to do?</p>
+        <a href="#notes" data-role="button" data-inline="true" data-icon="arrow-r">View Notes</a>
+        <button data-role="button" data-theme="a" id="logout" data-inline="true" data-icon="delete">Logout</button>
+    </div>
+</div>
+<div data-role="page" id="notes">
+    <div data-role="header" data-theme="b">
+        <h1><a href="#home" data-role="button" data-icon="home" data-iconpos="notext" data-inline="true"></a> Your Notes</h1>
+    </div>
+    <div data-role="content">
+        <h1>Your Notes <a href="#add-note" data-icon="plus" data-role="button" data-inline="true">Add note</a><a href="#member" data-theme="e" data-icon="back" data-role="button" data-inline="true">Back</a></h1>
+        <ul data-role="listview" data-filter="true" id="current-notes" data-icon="delete"></ul>
+    </div>
+</div>
+<div data-role="page" id="add-note" data-title="Add new note">
+    <div data-role="header" data-theme="b">
+        <h1>Add new note</h1>
+    </div>
+    <div data-role="content">
+        <textarea id="note-text"></textarea>
+        <div class='input-error' style="display: none;" id="note-error"></div>
+        <div class="actions">
+            <button data-role="button" id="save-new-note" data-theme="a" data-icon="check" data-inline="true">Save</button>
+            <a href="#notes" data-role="button" data-theme="e" data-icon="delete" data-inline="true">Cancel</a>
+        </div>
+    </div>
+</div>
+    </body>
+</html>
