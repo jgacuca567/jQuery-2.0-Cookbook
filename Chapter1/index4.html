@@ -2,22 +2,28 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Chapter 1 - Creating DOM Elements</title>
+	<title>Chapter 1 - Inserting content into an element</title>
 	<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
     <script>
     $(function(){
-    	$('#myList').after('<button>Button 1</button>');
-    	$('<button>Button 2</button>').insertAfter('#myList');
+    	//Remove the container elements current HTML
+    	$('#container').html("<p>I have replaced all the HTML within the #container element</p>");
+
+    	//Add some more HTML to the beginning of the container element
+    	$('#container').prepend('<p>Another paragraph that has been prepended</p>');
+
+    	//Add a button to the end of the container element after all other HTML content
+    	$('#container').append('<button>A Button Appended</button>');
+
+    	//Add some text into the text area element
+    	$('#myTextarea').val("Added some text using .text()");
     });
     </script>
 </head>
 <body>
 	<div id="container">
-		<ul id="myList">
-			<li>List item 1</li>
-			<li>List item 2</li>
-			<li>List item 3</li>
-		</ul>
+		<p>Here is some current HTML content</p>
 	</div>
+	<textarea name="" id="myTextarea" cols="30" rows="10"></textarea>
 </body>
 </html>
