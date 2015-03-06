@@ -6,28 +6,36 @@
 	<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
     <script>
     $(function(){
-    	var content = $('#content'); //Select the content div
-    	var span = $('.span-element'); //Select the span element
-    	var listelements = $('li'); //Select all the list elements
-    	/*List all the elements in the page*/
-    	var i = 1;
-    	listelements.each(function() {
-    		console.log('Loop: ' + i);
-    	});
+    	var element1 = $('#content .top .top-left'); //Select the top left division element
+    	var element2 = $('.parent').find('a'); //Select the anchor element
+    	var element3 = $('.parent').find('.grandchild'); //Select the grandchild element
     });
     </script>
 </head>
 <body>
-	<div class="division-container">Some text within a div which has a class</div>
-	<div id="content">Some text within a div which has an ID attribute</div>
-	<a href="#">A link</a>
-	<a href="#" rel="dofollow">A second link</a>
+	<div class="division-container">Some text <span>within</span> a div <span>which</span> has many <span>span</span> elements</div>
+	<div id="content">
+		<div class="top">
+			<div class="top-left">Left</div>
+			<div class="top-right">Right</div>
+		</div>
+	</div>
 	<ul class="info-list">
 		<li>List item 1</li>
 		<li>List item 2</li>
 		<li>List item 3</li>
 	</ul>
-	<button>Button 1</button>
-	<span class="span-element">Span 1</span>
+	<ul class="second-info-list">
+		<li>Second List item 1</li>
+		<li>Second List item 2</li>
+		<li>Second List item 3</li>
+	</ul>
+	<div class="parent">
+		<div class="child">
+			<div class="grandchild">
+				<a href="#">A link</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
