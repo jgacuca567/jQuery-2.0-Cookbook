@@ -9,6 +9,11 @@
     	var content = $('#content'); //Select the content div
     	var span = $('.span-element'); //Select the span element
     	var listelements = $('li'); //Select all the list elements
+    	/*List all the elements in the page*/
+    	var i = 1;
+    	listelements.each(function() {
+    		console.log('Loop: ' + i);
+    	});
     });
     </script>
 </head>
