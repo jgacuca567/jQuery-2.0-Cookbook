@@ -67,7 +67,25 @@
 		];
 
     $(function(){
+    	$.each(animals, function(index, obj) {
+    		 /* Clone the first element in the animal list */
+    		 var listTemplate = $('#animal-list li').first().clone();
 
+    		 //Change its name to match this objects name
+    		 listTemplate.find('.name').html(obj.name);
+
+    		 //Changes its type to match this objects type
+    		 listTemplate.find('.type').html(obj.type);
+
+    		 //Remove all its current classes
+    		 listTemplate.removeClass();
+
+    		 //Add the class from this object
+    		 listTemplate.addClass(obj.class);
+
+    		 //Append the modified element to the end of the list
+    		 $('#animal-list').append(listTemplate);
+    	});
     });
     </script>
 </head>
