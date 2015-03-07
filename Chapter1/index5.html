@@ -2,28 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Chapter 1 - Inserting content into an element</title>
+	<title>Chapter 1 - Modifying DOM element attributes and properties</title>
 	<script src="/../jQuery-2.0-Cookbook/js/jquery.min.js"></script>
     <script>
     $(function(){
-    	//Remove the container elements current HTML
-    	$('#container').html("<p>I have replaced all the HTML within the #container element</p>");
+    	//Set the checkbox to be checked
+        $('input[type="checkbox"]').prop('checked', 'true');
 
-    	//Add some more HTML to the beginning of the container element
-    	$('#container').prepend('<p>Another paragraph that has been prepended</p>');
+        //Disable any text inputs
+        $('input[type="text"]').prop('disabled', 'true');
 
-    	//Add a button to the end of the container element after all other HTML content
-    	$('#container').append('<button>A Button Appended</button>');
-
-    	//Add some text into the text area element
-    	$('#myTextarea').val("Added some text using .text()");
+        //Change the value of any text inputs
+        $('input[type="text"]').val('This is a new value');
     });
     </script>
 </head>
 <body>
-	<div id="container">
-		<p>Here is some current HTML content</p>
-	</div>
-	<textarea name="" id="myTextarea" cols="30" rows="10"></textarea>
+	<input type="checkbox">
+    <input type="text">
 </body>
 </html>
