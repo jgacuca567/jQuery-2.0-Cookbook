@@ -6,7 +6,11 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
     <script>
     $(function(){
-
+    	//Listen for a click on any of the remove buttons
+    	$('.remove-btn').click(function() {
+    		/* When a remove button has been clicked, select this buttons parent (the li element) and remove it*/
+    		$(this).parent().remove();
+    	});
     });
     </script>
 </head>
