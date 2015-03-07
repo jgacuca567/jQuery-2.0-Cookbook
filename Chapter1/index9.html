@@ -29,7 +29,10 @@
 		];
 
     $(function(){
-
+    	$.each(names, function(index, obj) {
+    		 /* List items will be created from the names variable and placed inside the ul#namelist */
+    		 $('#namelist').append('<li>#' + obj.id + " " + obj.firstname + " " + obj.lastname + '</li>');
+    	});
     });
     </script>
 </head>
