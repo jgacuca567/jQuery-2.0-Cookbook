@@ -3,6 +3,35 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chapter 3 :: AJAX & JSON</title>
+	<style>
+		.left{
+			width: 200px;
+			background-color: #CCC;
+			float: left;
+			height: 100px;
+			text-align: center;
+			font-size: 25px;
+			padding: 40px 10px 10px 10px;
+		}
+
+		.right{
+			width: 300px;
+			float: left;
+			margin-left: 10px;
+			background-color: #333;
+			color: #FFF;
+			height: 120px;
+			font-size: 20px;
+			position: relative;
+			padding: 20px 10px 10px 10px;
+		}
+
+		.refresh {
+			position: absolute;
+			right: 5px;
+			top: 5px;
+		}
+	</style>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
     <script>
     $(function(){
@@ -10,5 +39,13 @@
     });
     </script>
 </head>
-<body></body>
+<body>
+	<div class="left">
+		Famous <br> Einstein Quotes
+	</div>
+	<div class="right">
+		<p class="quote"></p>
+		<button class="refresh">Get Quote</button>
+	</div>
+</body>
 </html>
