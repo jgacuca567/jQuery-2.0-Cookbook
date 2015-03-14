@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 9</title>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="/../jQuery-2.0-Cookbook/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
+    <style>
+		.progress-bar{
+			position: relative;
+		}
+		.progress-label{
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			text-align: center;
+			line-height: 35px;
+		}
+    </style>
+    <script>
+    $(function(){
+    	var progressBar = $('.progress-bar');
+    	var progressLabel = $('.progress-label');
+    	progressBar.progressbar({
+    		change: function(){
+    			progressLabel.text(progressBar.progressbar("value") + "% complete...");
+    		},
+    		complete: function(){
+    			progressLabel.text("Completed!");
+    		}
+    	});
+    	$('.start-progress').button().click(doStuff);
+    	function doStuff(){
+    		var progressValue = ((progressBar.progressbar("value") || 0) + 1);
+    		progressBar.progressbar("value", progressValue);
+    		if (progressValue < 100) {
+    			setTimeout(doStuff, 100);
+    		}
+    	}
+    });
+    </script>
+</head>
+<body>
+	<div class="progress-bar"></div>
+	<div class="progress-label">Press "Start Progress" to begin load...</div>
+	<button class="start-progress">Start Progress</button>
+</body>
+</html>

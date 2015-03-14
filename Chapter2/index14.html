@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 2 - jQuery Events</title>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	$('a').click(function(event) {
+    		/* Act on the event */
+    		alert("You have clicked on a link");
+    	});
+    	$('body').on('click', 'input[type="text"]', function(event) {
+    		alert("You have clicked a text input!");
+    	});
+    	$('.clickme').click(function(event) {
+    		/* Act on the event */
+    		alert("You have clicked a division element");
+    	});
+    });
+    </script>
+</head>
+<body>
+	<a href="#">Link 1</a>
+	<input type="text" name="input1">
+	<div class="clickme">Click Me!</div>
+</body>
+</html>

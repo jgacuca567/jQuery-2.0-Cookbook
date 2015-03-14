@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 9</title>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="/../jQuery-2.0-Cookbook/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
+    <style>
+        .frame{
+            width: 500px;
+            margin: 100px auto auto auto;
+            background-color: #494949;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px #CCC;
+        }
+        .frame .settings{
+            line-height: 40px;
+            text-align: center;
+            background-color: #333;
+            color: #FFF;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .frame .datepickers{
+            line-height: 100px;
+            text-align: center;
+            color: #CCC;
+        }
+    </style>
+    <script>
+    $(function(){
+        var _start = $('.start');
+        var _end = $('.end');
+        var _restrict = $('.restrict');
+        var _formatDate = $('.formatDate');
+        var _dateFormat = 'dd/mm/yy';
+        _start.datepicker({
+            dateFormat: _dateFormat,
+            minDate: new Date(),
+            onClose: function(selectedDate) {
+                _end.datepicker("option", "minDate", selectedDate);
+                restrictDates();
+            }
+        });
+        _end.datepicker({
+            dateFormat: _dateFormat,
+            onClose: function(selectedDate) {
+                _start.datepicker("option", "maxDate", selectedDate);
+            }
+        });
+        _formatDate.change(function() {
+            _dateFormat = _formatDate.val();
+            _start.datepicker("option", "dateFormat", _dateFormat);
+            _end.datepicker("option", "dateFormat", _dateFormat);
+        });
+        _restrict.change(function(){
+            restrictDates();
+        });
+        function restrictDates(){
+            var maxDate = _start.datepicker("getDate");
+            if (maxDate != null) {
+                maxDate.setFullYear(maxDate.getFullYear() + parseInt(_restrict.val()));
+                _end.datepicker("option", "maxDate", maxDate);
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+    <div class="frame">
+        <div class="settings">
+            <label>Restrict:</label>
+            <select class="restrict">
+                <option value="1">1 Year</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+            </select>
+            <label>Format:</label>
+            <select class="formatDate">
+                <option value="dd/mm/yy">English Format</option>
+                <option value="mm/dd/yy">American Format</option>
+            </select>
+        </div>
+        <div class="datepickers">
+            Start: <input type="text" class="start">
+            End: <input type="text" class="end">
+        </div>
+    </div>
+</body>
+</html>

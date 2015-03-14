@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 2 :: jQuery Events</title>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	/*Non Alpha Numeric charactters will not be allowed such as !@#$%^&*()_+{}|~*/
+    	$('.myInput').keypress(function(event){
+    		var regex = new RegExp("^[a-zA-Z0-9]+$");
+    		var key = String.fromCharCode(event.which);
+    		if (!regex.test(key)) {
+    			return false;
+    		}
+    	});
+    });
+    </script>
+</head>
+<body>
+	<input type="text" class="myInput">
+</body>
+</html>
