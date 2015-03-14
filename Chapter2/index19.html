@@ -3,6 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chapter 2 :: jQuery Events</title>
+	<style>
+		.info{
+			width: 530px;
+			border: solid 2px yellow;
+			padding: 10px;
+			text-align: center;
+			margin-top: 10px;
+			display: none;
+		}
+	</style>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
     <script>
     $(function(){
@@ -10,5 +20,11 @@
     });
     </script>
 </head>
-<body></body>
+<body>
+	<label for="">Your Name:</label>
+	<input type="text" name="name" class="hoverinfo" rel="Please provide us with your name.">
+	<input type="text" name="email" class="hoverinfo" rel="Please provide us with your email address.">
+	<button class="hoverinfo" rel="Click here to submit your information to us">Submit</button>
+	<div class="info"></div>
+</body>
 </html>
