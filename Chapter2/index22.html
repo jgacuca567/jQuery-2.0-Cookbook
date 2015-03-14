@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Chapter 2 :: jQuery Events</title>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script>
+		$(function() {
+			$('.colourme').on("switchColour", function(event, colour, text){
+				$(this).html(text);
+				$(this).css("color", colour);
+			});
+			$("button").click(function(){
+				var colour = $(this).attr("rel");
+				$('.colourme').trigger("switchColour", [colour, colour + ' button pressed... ']);
+			});
+		});
+		</script>
+	</head>
+	<body>
+	    <button rel="red">Red</button>
+	    <button rel="orange">Orange</button>
+	    <button rel="yellow">Yellow</button>
+		<button rel="green">Green</button>
+		<button rel="blue">Blue</button>
+		<button rel="indigo">Indigo</button>
+		<button rel="violet">Violet</button>
+		<p class="colourme"></p>
+	</body>
+</html>
