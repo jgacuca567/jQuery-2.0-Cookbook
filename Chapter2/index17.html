@@ -6,9 +6,24 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
     <script>
     $(function(){
+    	/*When typing a letter, it will say key up and when the enter key has been pressed, it will notify the user*/
+    	$('.myInput').keyup(function(event) {
+    		/* Act on the event */
+    		$('#myList').append('<li>Key up!</li>');
+    	});
 
+    	$('.myInput').keydown(function(event) {
+    		/* Act on the event */
+    		$('#myList').append('<li>Key down!</li>');
+    		if (event.which == 13) {
+    			$('#myList').append('<li>Enter key pressed</li>');
+    		}
+    	});
     });
     </script>
 </head>
-<body></body>
+<body>
+	<input type="text" class="myInput">
+	<ul id="myList"></ul>
+</body>
 </html>
