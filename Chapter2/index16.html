@@ -6,9 +6,34 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
     <script>
     $(function(){
-
+    	$('#title').change(function(event) {
+    		/*In the select option, when the title is selected, the h1 will change the value */
+    		var titleText = "";
+    		switch($(this).val()){
+    			case "1":
+    				titleText = "This is the text for title 1";
+    				break;
+    			case "2":
+    				titleText = "This is the text for title 2";
+    				break;
+    			case "3":
+    				titleText = "This is the text for title 3";
+    				break;
+    			default:
+    				titleText = "No Title";
+    		}
+    		$('#main-title').html(titleText);
+    	});
     });
     </script>
 </head>
-<body></body>
+<body>
+	<select name="" id="title">
+		<option value="#">Select your title</option>
+		<option value="1">Title 1</option>
+		<option value="2">Title 2</option>
+		<option value="3">Title 3</option>
+	</select>
+	<h1 id="main-title">No Title</h1>
+</body>
 </html>
