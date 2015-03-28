@@ -35,7 +35,14 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
     <script>
     $(function(){
-
+    	$('.refresh').click(function(event) {
+    		$.ajax({
+    			url: 'request-1.php',
+    			type: 'GET'
+    		}).done(function(data){
+    			$('.quote').html(data);
+    		});
+    	});
     });
     </script>
 </head>
