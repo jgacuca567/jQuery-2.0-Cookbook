@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 7</title>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	$('.button1').click(function(event) {
+    		/* Act on the event */
+    		alert("Button 1 clicked");
+    	});
+
+    	$('body').on("click", ".button2", function(event) {
+    		/* Act on the event */
+    		alert("Button 2 clicked");
+    	});
+
+        /*Once the two buttons are clicked, they are recreated again*/
+        setTimeout(function(){
+            $('.additional').append('<button class="button1">Button 1 again</button>');
+            $('.additional').append('<button class="button2">Button 2 again</button>');
+        }, 2000);
+    });
+    </script>
+</head>
+<body>
+	<button class="button1">Button 1</button>
+	<button class="button2">Button 2</button>
+	<div class="additional"></div>
+</body>
+</html>

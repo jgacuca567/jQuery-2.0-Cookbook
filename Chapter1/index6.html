@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 1</title>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	//Listen for a click event on the green button
+    	$('#green-btn').click(function() {
+    		/* When the green button has been clicked, Remove all classses current on the #sometext paragraph*/
+    		$('#sometext').removeClass();
+
+    		//Add the .green class to the #sometext paragraph
+    		$('#sometext').addClass('green');
+    	});
+
+    	//Listen for a click event on the red button
+    	$('#red-btn').click(function() {
+    		/* When the red button has been clicked, Remove all classses current on the #sometext paragraph*/
+    		$('#sometext').removeClass();
+
+    		//Add the .red class to the #sometext paragraph
+    		$('#sometext').addClass('red');
+    	});
+
+    	//Listen for a click event on the yellow button
+    	$('#yellow-btn').click(function() {
+    		/* When the yellow button has been clicked, Remove all classses current on the #sometext paragraph*/
+    		$('#sometext').removeClass();
+
+    		//Add the .yellow class to the #sometext paragraph
+    		$('#sometext').addClass('yellow');
+    	});
+    });
+    </script>
+    <style>
+		.green{
+			background-color: #008000;
+			color: #FFFFFF;
+		}
+		.red{
+			background-color: #FF0000;
+			color: #FFFFFF;
+		}
+		.yellow{
+			background-color: #FFFF00;
+			color: #000000;
+		}
+    </style>
+</head>
+<body>
+	<p id="sometext">Here is some text that can have different styles applied to it dynamically</p>
+	<button id="green-btn">Green</button>
+	<button id="red-btn">Red</button>
+	<button id="yellow-btn">Yellow</button>
+</body>
+</html>

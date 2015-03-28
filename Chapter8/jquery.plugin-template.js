@@ -10,10 +10,17 @@
     var name = 'pluginName';
     plugin.prototype = {
         defaults: {
+<<<<<<< HEAD
             
         }
     };
     
+=======
+
+        }
+    };
+
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
     //The Actual plugin constructor
     function Plugin(element, options){
         var $scope = this;
@@ -21,7 +28,11 @@
         $scope.element = element;
         $scope.options = $.extend({}, this.defaults, options);
         $scope.init = function () {
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
         }
     }
     $.fn[name] = function(options){
@@ -29,4 +40,8 @@
             new Plugin(this, options).init();
         })
     }
+<<<<<<< HEAD
 })(jQuery);
+=======
+})(jQuery);
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64

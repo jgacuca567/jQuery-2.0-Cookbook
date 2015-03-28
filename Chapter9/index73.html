@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 9</title>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="/../jQuery-2.0-Cookbook/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
+    <style>
+    	@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100);
+		body{
+            background-color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+        .frame{
+            width: 800px;
+            background-color: #FFF;
+            margin: 100px auto auto auto;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .frame h1{
+            margin: -93px 0 0 0;
+            color: #FFF;
+            font-size: 70px;
+            text-align: center;
+        }
+        .frame h1 span{
+            color: #00B5B5;
+        }
+        .search-input-frame #searchInput{
+            width: 780px;
+            border: none;
+            font-weight: bold;
+            color: #999;
+            background: #373737;
+            font-size: 14px;
+            height: 40px;
+            padding: 0 0 0 10px;
+            margin: 0;
+            border-radius: 5px;
+            line-height: 40px;
+        }
+        .frame .head p{
+            font-style: italic;
+            text-align: center;
+        }
+        .frame .results ul li{
+            line-height: 30px;
+            font-size: 18px;
+        }
+        .frame .results .searching{
+            display: none;
+            text-align: center;
+            font-style: italic;
+            font-size: 18px;
+            line-height: 100px;
+        }
+        .frame .results ul li.no-results{
+            line-height: 100px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+    $(function() {
+    $('#searchInput').autocomplete({
+        minLength: 2,
+        source: function(input, response) {
+            $.ajax({
+                type: 'GET',
+                url: 'https://api.trakt.tv/calendars/shows/2014-09-01/7' + input.term + "&limit=10",
+                dataType: 'jsonp',
+                success: function(data) {
+                    var results = [];
+                    for (var i = 0; i < data.length; i++) {
+                        results.push({
+                            id: data[i].tvdb_id,
+                            label: data[i].title,
+                            value: data[i].title
+                        });
+                    }
+                    response(results);
+                }
+            });
+        },
+        select: function(event, ui) {
+            var showId = ui.item.id;
+            var _searchingMsg = $('.searching');
+            var _resultList = $('#results-list');
+            _resultList.empty();
+            _searchingMsg.fadeIn();
+            $.ajax({
+                type: 'GET',
+                url: 'https://api.trakt.tv/calendars/shows/2014-09-01/7' + showId,
+                dataType: 'jsonp',
+                success: function(data) {
+                    _searchingMsg.hide();
+                    for (var i = 0; i < data.length; i++) {
+                        resultList.append("<li><a target='_blank' href='" + data[i].url + "'>" + data[i].title + "</a></li>");
+                    }
+                }
+            });
+        }
+    });
+});
+    </script>
+</head>
+<body>
+    <div class="frame">
+        <h1>RELATED <span>TV</span> SHOWS</h1>
+        <div class="head">
+            <p>Find TV shows related to your favorites</p>
+            <div class="search-input-frame">
+                <input type="text" id="searchInput" placeholder="Search for a TV show...">
+            </div>
+            <div class="results">
+                <div class="searching">Searching for related shows...</div>
+                <ul id="results-list"></ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

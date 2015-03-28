@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 7</title>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script src="/../jQuery-2.0-Cookbook/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css">
+    <script>
+    $(function(){
+   //Set up the dialog elements
+   $('#default-dialog').dialog();
+   $('#second-dialog').dialog({
+      autoOpen: false,
+      show: {
+         effect: "fade",
+         duration: 500
+      },
+      hide: {
+         effect: "explode",
+         duration: 1000
+      }
+   });
+   $('#modal-dialog').dialog({
+      autoOpen: false,
+      modal: true
+   });
+   $('#confirmation-dialog').dialog({
+      autoOpen: false,
+      resizable: false,
+      buttons: {
+         "Yes": function() {
+            $(this).dialog("close");
+         },
+         "No": function() {
+            alert("Your dialog will stay open.");
+         }
+      }
+   });
+   //Set up button elements
+   $('.actions').buttonset();
+   $('#openSecondDialog').click(function(){
+      $('#second-dialog').dialog("open");
+   });
+   $('#openModalDialog').click(function(){
+      $('#modal-dialog').dialog("open");
+   });
+   $('#openConfirmationDialog').click(function(){
+      $('#confirmation-dialog').dialog("open");
+   });
+});
+    </script>
+</head>
+<body>
+	<div class="actions">
+		<button id="openSecondDialog">Open Second Dialog with Aniamtion</button>
+		<button id="openModalDialog">Open Modal Dialog</button>
+		<button id="openConfirmationDialog">Open Confirmation Dialog</button>
+	</div>
+	<div id="default-dialog" title="Default Dialog">
+		<p>This is a dialog with default behaviour</p>
+	</div>
+	<div id="second-dialog" title="Second Dialog">
+		<p>This is a dialog with animation that is opened by a button.</p>
+	</div>
+	<div id="modal-dialog" title="Modal Dialog">
+		<p>This is a modal dialog</p>
+	</div>
+	<div id="confirmation-dialog" title="Confirmation Dialog">
+		<p>Are you sure you want to close this dialog?</p>
+	</div>
+</body>
+</html>

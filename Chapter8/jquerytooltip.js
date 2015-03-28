@@ -5,7 +5,11 @@
 * Time: 5:49 PM
 */
 ;(function ($) {
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
     var name = 'tooltip';
     Plugin.prototype = {
         defaults: {
@@ -13,7 +17,11 @@
             'fadeInDelay': 200
         }
     };
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
     // The actual plugin constructor
     function Plugin(element, options) {
         var $scope = this;
@@ -29,7 +37,11 @@
                     +   "<div class='tooltip-arrow'></div>"
                     +   "<div class='tooltip-text'>" + $scope._text + "</div>"
                     + "</div>");
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
                 $html.css({
                     'position': 'absolute',
                     'text-align': 'center',
@@ -52,7 +64,11 @@
                         'left': '-10px',
                         'top': (($scope.options.height / 2) - 10)
                     });
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
                 $scope.$element.on("mouseover", function(){
                     $html.fadeIn($scope.options.fadeInDelay);
                     $scope.$element.after($html);
@@ -62,11 +78,20 @@
             }
         }
     }
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
     $.fn[name] = function (options) {
         return this.each(function () {
             new Plugin(this, options).init();
         });
     }
+<<<<<<< HEAD
  
 })(jQuery);
+=======
+
+})(jQuery);
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64

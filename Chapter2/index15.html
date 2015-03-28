@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 2 :: jQuery Events</title>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	/*When the value is changed, the alert box notifies me of the change*/
+    	$('#names').change(function(event) {
+    		/* Act on the event */
+    		var newValue = $(this).val();
+    		alert("Input value changed to: " + newValue);
+    	});
+
+    	$('#cat').change(function(event) {
+    		/* Act on the event */
+    		var newValue = $(this).val();
+    		alert("Input value changed to: " + newValue);
+    	});
+    });
+    </script>
+</head>
+<body>
+	<select id="names">
+		<option value="Leon">Leon</option>
+		<option value="Allyce">Allyce</option>
+		<option value="Jane">Jane</option>
+	</select>
+	<input type="text" value="The large cat sat on the mat" id="cat">
+</body>
+</html>

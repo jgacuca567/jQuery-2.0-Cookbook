@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 1 - Change an image source and tackle browser caching to ensure it is always updated</title>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	//Listen for a click on the red button
+    	$('#red-btn').click(function() {
+    		/* When the red button has been clicked, change the source of the #square image to be the red PNG*/
+    		$('#square').prop('src', '../images/red.png');
+    	});
+
+    	//Listen for a click on the green button
+    	$('#green-btn').click(function() {
+    		/* When the green button has been clicked, change the source of the #square image to be the green PNG*/
+    		$('#square').prop('src', '../images/green.png');
+    	});
+
+    	//Listen for a click on the blue button
+    	$('#blue-btn').click(function() {
+    		/* When the blue button has been clicked, change the source of the #square image to be the blue PNG*/
+    		$('#square').prop('src', '../images/blue.png');
+    	});
+    });
+    </script>
+</head>
+<body>
+	<img src="../images/black.png" id="square"/>
+<div>
+  <button id="red-btn">Red</button>
+		<button id="green-btn">Green</button>
+		<button id="blue-btn">Blue</button>
+	</div>
+</body>
+</html>

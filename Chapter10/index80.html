@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 10</title>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="https:////ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+<script>
+	function addEvent(msg){
+		var _list = $('#touch-event-response');
+		_list.append("<li>" + msg + "</li>");
+		_list.listview('refresh');
+	}
+	$(function(){
+		$(document).bind('tap', function(){
+			addEvent("Tap");
+		});
+		$(document).bind('tap', function(){
+			addEvent("Tap & Hold");
+		});
+		$(document).bind('swipe', function(){
+			addEvent("Swipe");
+		});
+		$(document).bind('swipeleft', function(){
+			$('#touch-event-response').empty();
+		});
+		$(window).bind('orientationchange', function(event){
+			addEvent("Orientation changed to: " + event.orientation);
+		});
+	});
+</script>
+</head>
+<body>
+	<div data-role="page">
+		<header data-role="header">
+			<h1>Chapter 10:: Recipe 7:: jQuery Mobile Touch Events</h1>
+		</header>
+		<div data-role="content">
+			<p>Perform various touch events and watch the output below</p>
+			<ul id="touch-event-response" data-role="listview"></ul>
+		</div>
+	</div>
+</body>
+</html>

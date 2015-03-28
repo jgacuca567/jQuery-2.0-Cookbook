@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chapter 1:: DOM Manipulation</title>
-	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script>
 		var animals = [
 			{
@@ -106,7 +106,7 @@
 			}
 			//Enable the previous button if we are not on the first page
 			else{
-				$('previous').prop('disabled', false);
+				$('.previous').prop('disabled', false);
 			}
 
 			//Disable the next button if there are no more pages
@@ -115,7 +115,7 @@
 			}
 			//Enable the next button if there are results left to page
 			else{
-				$('next').prop('disabled', false);
+				$('.next').prop('disabled', false);
 			}
 
 			//Loop through the pages and add them to the list

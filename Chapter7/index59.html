@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chapter 7</title>
+	<style>
+	.login-frame{
+		position: absolute;
+		top:0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		display: none;
+	}
+	.login-box{
+		width: 400px;
+		height: 165px;
+		padding: 20px;
+		margin: auto;
+		top: -165px;
+		box-shadow: 0 0 10px #CCC;
+		border-radius: 5px;
+		position: relative;
+	}
+	.form-group{
+		margin-bottom: 10px;
+	}
+	.form-group .form-control{
+		margin-left: 55px;
+		width: 275px;
+		height: 30px;
+		padding: 0 5px 0 5px;
+		font-size: 16px;
+		border-radius: 5px;
+		border: solid 1px #CCC;
+		color: #999;
+	}
+	.form-group .form-label{
+		width: 50px;
+		font-size: 18px;
+		display: block;
+		float: left;
+		line-height: 30px;
+		padding-left: 5px;
+		color: #333;
+	}
+	.login-msg{
+		border: solid 1px #bce8f1;
+		text-align: center;
+		line-height: 30px;
+		margin-bottom: 10px;
+		border-radius: 5px;
+		color: rgba(58, 135, 173, 0.90);
+		background-color: rgba(217, 237, 247, 0.99);
+	}
+	.login-msg.success{
+		color: rgba(70, 136, 71, 0.96);
+		background-color: rgba(223, 240, 216, 0.97);
+		border-color: rgba(214, 233, 198, 0.98);
+	}
+	.login-msg.error{
+		color: rgba(185, 74, 72, 0.98);
+		background-color: rgba(242, 222, 222, 0.98);
+		border-color: rgba(238, 211, 215, 0.98);
+	}
+	.login-actions{
+		text-align: right;
+	}
+	.btn{
+		height: 40px;
+		width: 100px;
+		display: inline-block;
+		padding: 6px 12px;
+		margin-bottom: 0;
+		font-size: 14px;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		cursor: pointer;
+		border: 1px solid transparent;
+		border-radius: 4px;
+	}
+	.login-btn{
+		color: #FFFFFF;
+		background-color: #5cb85c;
+		border-color: #4cae4c;
+	}
+	.login-btn:hover{
+		background-color: #458a45;
+	}
+	.close-login{
+		color: #FFFFFF;
+		background-color: #d2333d;
+		border-color: #ac2925;
+	}
+	.close-login:hover{
+		background-color: #ac2c2c;
+	}
+	</style>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script>
+    $(function(){
+    	$(document).on('click', '.open-login', function() {
+    		$('.login-frame').fadeIn(500);
+    		$('.login-box').animate({'top': '50px'}, 500);
+    	});
+    	$(document).on('click', '.close-login', function() {
+    		$('.login-box').animate({'top': '-165px'}, 500);
+    		$('.login-frame').fadeOut(500);
+    	});
+    	$(document).on('click', '.login-btn', function() {
+    		var username = $('#username').val();
+    		var password = $('#password').val();
+    		$.ajax({
+    			url: '/jQuery-2.0-Cookbook/Chapter7/index.php',
+    			type: 'POST',
+    			data: {
+    				'username': username,
+    				'password': password
+    			},
+    			success: function(response){
+    				var _loginMsg = $('.login-msg');
+    				if (response.success) {
+    					_loginMsg.addClass('success').removeClass('error');
+    					_loginMsg.html("Login was successful");
+    				} else {
+    					_loginMsg.addClass('error').removeClass('success');
+    					_loginMsg.html(response.error);
+    					$('.login-box').animate({left: -25}, 20).animate({left: 0}, 60).animate({left: 25}, 20).animate({left: 0}, 60);
+    				}
+    			}
+    		});
+    	});
+    });
+    </script>
+</head>
+<body>
+	<button class="open-login">Open Login</button>
+	<div class="login-frame">
+		<div class="login-box">
+			<div class="login-msg">Please login below</div>
+			<div class="form-group">
+				<label for="" class="form-label">Username</label>
+				<input type="text" class="form-control" id="username">
+			</div>
+			<div class="form-group">
+				<label for="" class="form-label">Password</label>
+				<input type="text" class="form-control" id="password">
+			</div>
+			<div class="login-actions">
+				<button class="btn login-btn">Login</button>
+				<button class="btn close-login">Cancel</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

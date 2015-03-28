@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+		<head>
+		<meta charset="UTF-8">
+		<title>Chapter 10</title>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script src="https:////ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+		<script>
+		$(document).bind("pagebeforechange", function(e, data) {
+			if (typeof data.toPage === "string") {
+				var urlObject = $.mobile.path.parseUrl(data.toPage);
+		if (urlObject.hash.search(/^#categorypage/) !== -1 && urlObject.hash.search(/cat=*/) !== -1) {
+		displayCategory(urlObject, data.options);
+		//We are handling the change page event ourselves to prevent the default behaviour
+		e.preventDefault();
+		}
+		}
+		});
+
+		function displayCategory(urlObject, options) {
+		var catName = urlObject.hash.replace(/.*cat=/, "");
+		var pageId = urlObject.hash.replace( /\?.*$/, "");
+		var _page = $(pageId);
+		var _header = _page.children(":jqmData(role=header)");
+		var _content = _page.children(":jqmData(role=content)");
+		$.ajax({
+		url: 'categories.php',
+		type: 'POST',
+		data: {
+		category: catName
+		},
+		success: function(response) {
+		if (response.success) {
+		var category = response.data;
+		//Add title to header
+		_header.find("h1").html(category.title);
+		//Create content HTML
+		var contentHtml = "<p>" + category.description + ":</p><ul>";
+			for (var i = 0; i < category.items.length; i++) {
+			var item = category.items[i];
+			contentHtml += "<li>" + item + "</li>";
+			}
+		contentHtml += "</ul>";
+		_content.html(contentHtml);
+		//Update the URL to reflect the page the user is actually on
+		_page.data("url", urlObject.href);
+		$.mobile.changePage(_page, options);
+		} else {
+		alert(response.data);
+		}
+		}
+		});
+		}
+		</script>
+		</head>
+		<body>
+<div data-role="page" id="home">
+          <header data-role="header">
+    <h1>Dynamic page creation demo</h1>
+  </header>
+          <div data-role="content">
+    <h2>Select a category:</h2>
+    <a href="#categorypage?cat=colours" data-role="button">Colours</a> <a href="#categorypage?cat=shapes" data-role="button">Shapes</a> <a href="#categorypage?cat=sounds" data-role="button">Sounds</a> </div>
+        </div>
+<div id="categorypage" data-role="page">
+          <div data-role="header"></div>
+          <div data-role="content"></div>
+        </div>
+</body>
+</html>

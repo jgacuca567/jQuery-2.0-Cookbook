@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php 
 	if (isset($_FILES['image'])) {
 		$response = array(
 			'success' => false, 
+=======
+<?php
+	if (isset($_FILES['image'])) {
+		$response = array(
+			'success' => false,
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
 			'error' => ""
 		);
 		//Get Selection Data
@@ -35,4 +42,8 @@
 		header("Content-Type: application/json; charset=UTF-8");
 		echo json_encode($response);
 	}
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64

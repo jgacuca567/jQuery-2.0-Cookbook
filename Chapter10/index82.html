@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chapter 10</title>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css" />
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="https:////ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+</head>
+<body>
+   <div data-role="page" id="login" data-title="Login">
+    <header data-role="header" data-theme="b">
+        <h1><a href="#home" data-role="button" data-icon="home" data-iconpos="notext" data-inline="true"></a> Login</h1>
+    </header>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+            <label for="login-username">Username:</label>
+            <input type="text" name="username" id="login-username" value="" />
+        </div>
+        <div data-role="fieldcontain">
+            <label for="login-password">Password:</label>
+            <input type="password" name="password" id="login-password" value="" />
+        </div>
+        <button data-role="button" id="login-account" data-theme="a">Login</button>
+        <p>Don't have an account? <a href='#register'>Register</a>.</p>
+        <div data-role="page" id="register" data-title="Register">
+            <header data-role="header" data-theme="b">
+                <h1><a href="#home" data-role="button" data-icon="home" data-iconpos="notext" data-inline="true"></a> Register</h1>
+            </header>
+            <div data-role="content">
+                <div data-role="fieldcontain">
+                    <label for="register-username">Username:</label>
+                    <input type="text" name="username" id="register-username" value="" />
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="register-password">Password:</label>
+                    <input type="password" name="password" id="register-password" value="" />
+                </div>
+                <div data-role="fieldcontain">
+                    <label for="register-passwordagain">Password Again:</label>
+                    <input type="password" name="register-passwordagain" id="register-passwordagain" value="" />
+                </div>
+                <button data-role="button" id="register-account" data-theme="a">Register</button>
+                <p>Already have an account? <a href='#login'>Login</a>.</p>
+            </div>
+        </div>
+        <div data-role="page" id="member">
+            <header data-role="header" data-theme="b">
+                <h1><a href="#home" data-role="button" data-icon="home" data-iconpos="notext" data-inline="true"></a> Member's Page</h1>
+            </header>
+            <div data-role="content">
+                <p>You're logged in.</p>
+                <button data-role="button" data-theme="a" id="logout">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
