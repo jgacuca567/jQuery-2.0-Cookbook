@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Chapter 3 :: AJAX & JSON</title>
-	<style>
-		
-	</style>
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script>
-    $(function(){
-    	$('#makeRequest').click(function(event) {
-    		$.ajax({
-    			url: 'i-do-not-exist.html',
-    			type: 'GET'
-    		}).done(function(data){
-    			/**
-    			 * Will not succeed as no file exists
-    			 */
-    		});
-    	});
 
-    	$(document).ajaxError(function(event, request, settings) {
-    		/* Stuff to do when an AJAX call returns an error */
-    		alert("Error trying to reach '" + settings.url + "' . ERROR CODE: " + request.status + " ERROR MESSAGE: " + request.statusText);
-    	});
-    });
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3 :: AJAX & JSON</title>
+    <style>
+    </style>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $.ajax({
+                url: 'request-2.php',
+                type: 'GET'
+            }).done(function(data) {
+                $.each(data, function(key, value) {
+                    $('#peopleList').append("<li>#" + key + " " + value.firstname + " " + value.lastname + " </li>");
+                });
+            });
+        });
     </script>
 </head>
+
 <body>
-	<h1>By Default the code should fail</h1>
-	<button id="makeRequest">Make AJAX Request</button>
+    <ul id="peopleList"></ul>
 </body>
+
 </html>
