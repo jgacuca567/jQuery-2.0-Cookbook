@@ -1,5 +1,9 @@
 ;(function ($) {
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
     var name = 'imagecrop';
     Plugin.prototype = {
         defaults: {
@@ -7,7 +11,11 @@
             minHeight: 100
         }
     };
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
     // The actual plugin constructor
     function Plugin(element, options) {
         var $scope = this;
@@ -30,7 +38,11 @@
         var _overlayLayer;
         var _selectionLayer;
         var _selectionOutline;
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
         $scope.init = function () {
             //Has this element already been initialised?
             if (typeof $scope.$element.data("selection-x") != "undefined") {
@@ -69,7 +81,11 @@
                 'display': 'none'
             });
         };
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
         /**
          * MAKING THE SELECTION
          */
@@ -108,7 +124,11 @@
             });
             $scope.updateElementData();
         };
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
         /**
          * MOVING THE SELECTION
          */
@@ -139,7 +159,11 @@
                 $scope.updateElementData();
             });
         }
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
         /**
          * HELPER FUNCTIONS
          */
@@ -171,13 +195,24 @@
               "selection-height": $scope.getSelectionDimentions().height
             });
         }
+<<<<<<< HEAD
+ 
+    }
+ 
+=======
 
     }
 
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
     $.fn[name] = function (options) {
         return this.each(function () {
             new Plugin(this, options).init();
         });
     }
+<<<<<<< HEAD
+ 
+})(jQuery);
+=======
 
 })(jQuery);
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64

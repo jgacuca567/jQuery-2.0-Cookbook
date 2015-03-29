@@ -6,7 +6,11 @@
 * To change this template use Tools | Templates.
 */
 ;(function ($) {
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
     var name = 'slider';
     Plugin.prototype = {
         defaults: {
@@ -14,7 +18,11 @@
             height: 250
         }
     };
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
     // The actual plugin constructor
     function Plugin(element, options) {
         var $scope = this;
@@ -52,11 +60,20 @@
             });
         }
     }
+<<<<<<< HEAD
+ 
+=======
 
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64
     $.fn[name] = function (options) {
         return this.each(function () {
             new Plugin(this, options).init();
         });
     }
+<<<<<<< HEAD
+ 
+})(jQuery);
+=======
 
 })(jQuery);
+>>>>>>> 364a010d51aff80db452ecaf4edb55850c1e1f64

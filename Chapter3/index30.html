@@ -25,26 +25,6 @@ body {
 .search .header input {
 	width: 350px;
 }
-.suggest-input input{
-  width: 440px;
-}
-.suggest-input{
-  position: relative;
-  padding: 25px;
-}
-/*SUGGESTION LIST STYLES*/
-.suggest-list{
-  position: absolute;
-  width: 424px;
-  background-color: #f1f1f1;
-  margin: 0;
-  left: 25px;
-  top: 50px;
-  z-index: 100;
-  display: none;
-  list-style: none;
-  padding: 10px;
-}
 #results-holder {
 	min-height: 200px;
 }
@@ -82,23 +62,25 @@ body {
 		<script src="js/jquery.min.js"></script>
 		<script>
 		$(function(){
-      $('#text').keyup(function() {
-        if($('#text').val().length > 2){
-        $('.suggest-list').show();
-        makeSuggestion();
-        } else{
-        $('.suggest-list').hide();
-        }
-      });
-      $('.search').on('click', '.suggestion', function() {
-        $('#text').val($(this).html());
-      });
-    });
+  //Hide the result list on load
+  $('#results-list').hide();
+  //Click event when search button is pressed
+  $('#search').click(function(){
+    doSearch();
+  });
+    //Keypress event to see if enter was pressed in text
+    //input
+  $('#text').keydown(function(e){
+  if(e.keyCode == 13){
+    doSearch();
+  }
+  });
+});
 
-function makeSuggestion() {
+function doSearch() {
   var searchText = $('#text').val();
   //Rehide the search results
-  $('.suggest-list').empty();
+  $('#results-list').hide();
   $.ajax({
     url: 'search.php',
     type: 'POST',
@@ -106,18 +88,23 @@ function makeSuggestion() {
       'text': searchText
     },
     beforeSend: function(){
-      $('.suggest-list').append("<li class='loading'>Loading...</li>");
+      $('.loading').fadeIn();
     },
     success: function(data) {
+      $('.loading').fadeOut();
+      //Was everything successful, no errors in the PHP
+      //script
       if (data.success) {
-        $('.suggest-list').empty();
+        $('#results-list').empty();
         if(data.results.length > 0) {
           $.each(data.results, function(){
-            $('.suggest-list').append("<li><a href='#' class='suggestion'>" + this.title + "</a></li>");
+            $('#results-list').append("<li>" + this.title + "</li>");
           });
         } else {
-          $('.suggest-list').append("<li class='no-results'>Nothing to suggest...</li>");
+          $('#results-list').append("<li class='no-results'>Your search did not return any results</li>");
         }
+        //Show the results list
+        $('#results-list').fadeIn();
       } else {
         //Display the error message
         alert(data.error);
@@ -133,10 +120,15 @@ function makeSuggestion() {
           <div class="search">
             <div class="header">
               <h1>Chapter 3:: Search Feature</h1>
-            </div>
-            <div class="suggest-input">
               <input type="text" id="text">
-              <ul class="suggest-list"></ul>
+              <button id="search"></button>
+            </div>
+            <div id="results-holder">
+              <div class="loading-holder">
+                <div class="loading">Loading</div>
+              </div>
+              <ul id="results-list">
+              </ul>
             </div>
           </div>
         </div>
