@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+		<head>
+		<meta charset="UTF-8">
+		<title>Chapter 3:: AJAX and JSON</title>
+		<style>
+/*Include a web font from Google*/
+@import url(http://fonts.googleapis.com/css?family=Denk+One);
+/*Basic CSS for positioning*/
+body {
+	font-family: 'Denk One', sans-serif;
+}
+#frame {
+	width: 500px;
+	margin: 125px auto auto auto;
+	border: solid 1px #CCC;
+	box-shadow: 0 0 10px #CCC;
+	border-radius: 5px;
+	background-color: #FFF;
+}
+.search .header {
+	margin: 25px;
+	text-align: center;
+}
+.search .header input {
+	width: 350px;
+}
+#results-holder {
+	min-height: 200px;
+}
+.loading {
+	text-align: center;
+	line-height: 30px;
+	display: none;
+}
+.loading-holder {
+	height: 30px;
+}
+/*Styling for the results list*/
+#results-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#results-list li {
+	line-height: 30px;
+	border-bottom: solid 1px #CCC;
+	padding: 5px 5px 5px 10px;
+	color: #333;
+}
+/*Remove the Border from the last list element so it doesn't class with the frame border*/
+#results-list li:last-child {
+	border: none;
+}
+/*Style the no results list item*/
+#results-list .no-results {
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+}
+</style>
+		<script src="js/jquery.min.js"></script>
+		<script>
+		$(function(){
+  //Hide the result list on load
+  $('#results-list').hide();
+  //Click event when search button is pressed
+  $('#search').click(function(){
+    doSearch();
+  });
+    //Keypress event to see if enter was pressed in text
+    //input
+  $('#text').keydown(function(e){
+  if(e.keyCode == 13){
+    doSearch();
+  }
+  });
+});
+
+function doSearch() {
+  var searchText = $('#text').val();
+  //Rehide the search results
+  $('#results-list').hide();
+  $.ajax({
+    url: 'search.php',
+    type: 'POST',
+    data: {
+      'text': searchText
+    },
+    beforeSend: function(){
+      $('.loading').fadeIn();
+    },
+    success: function(data) {
+      $('.loading').fadeOut();
+      //Was everything successful, no errors in the PHP
+      //script
+      if (data.success) {
+        $('#results-list').empty();
+        if(data.results.length > 0) {
+          $.each(data.results, function(){
+            $('#results-list').append("<li>" + this.title + "</li>");
+          });
+        } else {
+          $('#results-list').append("<li class='no-results'>Your search did not return any results</li>");
+        }
+        //Show the results list
+        $('#results-list').fadeIn();
+      } else {
+        //Display the error message
+        alert(data.error);
+      }
+    }
+  });
+}
+
+		</script>
+		</head>
+		<body>
+        <div id="frame">
+          <div class="search">
+            <div class="header">
+              <h1>Chapter 3:: Search Feature</h1>
+              <input type="text" id="text">
+              <button id="search"></button>
+            </div>
+            <div id="results-holder">
+              <div class="loading-holder">
+                <div class="loading">Loading</div>
+              </div>
+              <ul id="results-list">
+              </ul>
+            </div>
+          </div>
+        </div>
+</body>
+</html>
