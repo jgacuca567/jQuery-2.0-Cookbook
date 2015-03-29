@@ -7,11 +7,6 @@
     <script>
     var people = [
     	{
-    		title: "Mr",
-    		firstname: "John",
-    		lastname: "Doe"
-    	},
-    	{
     		title: "Mrs",
     		firstname: "Jane",
     		lastname: "Doe"
@@ -21,6 +16,11 @@
     		firstname: "Johnathan",
     		lastname: "Williams"
     	},
+        {
+            title: "Mr",
+            firstname: "John",
+            lastname: "Andrews"
+        },
     	{
     		title: "Sir",
     		firstname: "Edward",
@@ -28,22 +28,21 @@
     	}
     ];
 
-    function findObjects(parameter, value, object) {
-    	var matches = [];
-    	for (var i in object) {
-    		if (typeof object[i] == 'object') {
-    			matches = matches.concat(findObjects(parameter, value, object[i]));
-    		} else if (i == parameter && object[parameter] == value){
-    			matches.push(object);
-    		}
-    	}
-    	return matches;
+    function sortObjectsByParam(param){
+        return function (a, b) {
+            if (a[param] == b[param]) {
+                return 0;
+            }
+            if (a[param] > b[param]) {
+              return 1;
+            } else{
+                return -1;
+            }
+        }
     }
-    /**
-     * Using console, the people who have the titles (Sir), the data will show.
-     */
-    var results = findObjects("title", "Sir", people);
-    console.log(results);
+
+    people.sort(sortObjectsByParam("lastname"));
+    console.log(people);
     </script>
 </head>
 <body></body>
