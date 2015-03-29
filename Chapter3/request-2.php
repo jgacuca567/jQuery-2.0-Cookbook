@@ -20,11 +20,11 @@
 	/**
 	 * Ensure the browser is expecting the correct content type format and charset
 	 */
-	header ("Contetn-Type: application/json; charset=UTF-8");
+	header("Content-Type: application/json; charset=UTF-8");
 	 
 	/**
 	 * Encode the array of people into JSON data
 	 */
-	echo json_encode($people)
+	echo json_encode($people);
 	
 ?>
