@@ -14,8 +14,8 @@
                 type: 'GET'
             }).done(function(data) {
                 $.each(data, function(key, value) {
-                    $('#peopleList').append("<li>#" + key + " " + value.firstname + " " + value.lastname + " </li>");
-                });
+  $('#peopleList').append("<li>#" + key + " " + value.firstname + " " + value.lastname + "</li>");
+});
             });
         });
     </script>
