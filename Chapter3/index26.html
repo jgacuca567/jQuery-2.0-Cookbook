@@ -5,9 +5,45 @@
 	<title>Chapter 7</title>
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
     <script>
-    $(function(){
+    var people = [
+    	{
+    		title: "Mr",
+    		firstname: "John",
+    		lastname: "Doe"
+    	},
+    	{
+    		title: "Mrs",
+    		firstname: "Jane",
+    		lastname: "Doe"
+    	},
+    	{
+    		title: "Sir",
+    		firstname: "Johnathan",
+    		lastname: "Williams"
+    	},
+    	{
+    		title: "Sir",
+    		firstname: "Edward",
+    		lastname: "Tailor"
+    	}
+    ];
 
-    });
+    function findObjects(parameter, value, object) {
+    	var matches = [];
+    	for (var i in object) {
+    		if (typeof object[i] == 'object') {
+    			matches = matches.concat(findObjects(parameter, value, object[i]));
+    		} else if (i == parameter && object[parameter] == value){
+    			matches.push(object);
+    		}
+    	}
+    	return matches;
+    }
+    /**
+     * Using console, the people who have the titles (Sir), the data will show.
+     */
+    var results = findObjects("title", "Sir", people);
+    console.log(results);
     </script>
 </head>
 <body></body>
