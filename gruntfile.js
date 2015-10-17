@@ -44,7 +44,7 @@ module.exports = function(grunt) {
                 tasks: ['compass']
             },
             html: {
-                files: ['*.html', '/*.html']
+                files: ['*.html', 'Chapter3/*.html']
             }, //html
             all: {
                 files: '{,**/}*.js',
