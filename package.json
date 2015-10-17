@@ -1,5 +1,5 @@
 {
-  "name": "jQuery2 Development Cookbook",
+  "name": "jquery-cookbook",
   "version": "0.0.3",
   "repository": {
     "type": "git",
@@ -11,6 +11,7 @@
     "grunt-contrib-compass": "^1.0.3",
     "grunt-contrib-jshint": "^0.11.2",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-force-task": "^1.0.0",
     "grunt-postcss": "^0.5.5",
     "grunt-sass": "~0.18.0",
     "jshint-stylish": "^2.0.1",
