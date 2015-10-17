@@ -5,27 +5,29 @@
     <meta charset="UTF-8">
     <title>Chapter 3 :: AJAX & JSON</title>
     <style>
+
     </style>
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script>
-    /**
-     * the .done()  function is implemented after the ajax has been completed successfuly
-     */
-        $(function() {
-            $.ajax({
-                url: 'request-2.php',
-                type: 'GET'
-            }).done(function(data) {
-                $.each(data, function(key, value) {
-  $('#peopleList').append("<li>#" + key + " " + value.firstname + " " + value.lastname + "</li>");
-});
-            });
-        });
-    </script>
 </head>
 
 <body>
     <ul id="peopleList"></ul>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+    /**
+     * the .done()  function is implemented after the ajax has been completed successfuly
+     */
+    $(function() {
+        $.ajax({
+            url: 'request-2.php',
+            type: 'GET'
+        }).done(function(data) {
+            $.each(data, function(key, value) {
+                $('#peopleList').append("<li>#" + key + " " + value.firstname + " " + value.lastname + "</li>");
+            });
+        });
+    });
+    </script>
+    <script src="http://localhost:35729/livereload.js"></script>
 </body>
 
 </html>
