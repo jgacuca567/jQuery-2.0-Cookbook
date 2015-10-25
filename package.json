@@ -6,6 +6,7 @@
     "url": "https://github.com/jgacuca567/jQuery-2.0-Cookbook.git"
   },
   "devDependencies": {
+    "autoprefixer": "^6.0.3",
     "autoprefixer-core": "^5.2.1",
     "grunt": "~0.4.5",
     "grunt-contrib-compass": "^1.0.3",
