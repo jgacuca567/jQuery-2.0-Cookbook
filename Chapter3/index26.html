@@ -2,42 +2,44 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Chapter 7</title>
-	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+	<title>Chapter 3</title>
+</head>
+<body>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script>
     var people = [
-    	{
-    		title: "Mr",
-    		firstname: "John",
-    		lastname: "Doe"
-    	},
-    	{
-    		title: "Mrs",
-    		firstname: "Jane",
-    		lastname: "Doe"
-    	},
-    	{
-    		title: "Sir",
-    		firstname: "Johnathan",
-    		lastname: "Williams"
-    	},
-    	{
-    		title: "Sir",
-    		firstname: "Edward",
-    		lastname: "Tailor"
-    	}
+        {
+            title: "Mr",
+            firstname: "John",
+            lastname: "Doe"
+        },
+        {
+            title: "Mrs",
+            firstname: "Jane",
+            lastname: "Doe"
+        },
+        {
+            title: "Sir",
+            firstname: "Johnathan",
+            lastname: "Williams"
+        },
+        {
+            title: "Sir",
+            firstname: "Edward",
+            lastname: "Tailor"
+        }
     ];
 
     function findObjects(parameter, value, object) {
-    	var matches = [];
-    	for (var i in object) {
-    		if (typeof object[i] == 'object') {
-    			matches = matches.concat(findObjects(parameter, value, object[i]));
-    		} else if (i == parameter && object[parameter] == value){
-    			matches.push(object);
-    		}
-    	}
-    	return matches;
+        var matches = [];
+        for (var i in object) {
+            if (typeof object[i] == 'object') {
+                matches = matches.concat(findObjects(parameter, value, object[i]));
+            } else if (i == parameter && object[parameter] == value){
+                matches.push(object);
+            }
+        }
+        return matches;
     }
     /**
      * Using console, the people who have the titles (Sir), the data will show.
@@ -45,6 +47,6 @@
     var results = findObjects("title", "Sir", people);
     console.log(results);
     </script>
-</head>
-<body></body>
+    <script src="http://localhost:35729/livereload.js"></script>
+</body>
 </html>
