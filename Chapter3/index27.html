@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Chapter 3</title>
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script>
-    var people = [
-    	{
-    		title: "Mrs",
-    		firstname: "Jane",
-    		lastname: "Doe"
-    	},
-    	{
-    		title: "Sir",
-    		firstname: "Johnathan",
-    		lastname: "Williams"
-    	},
-        {
-            title: "Mr",
-            firstname: "John",
-            lastname: "Andrews"
-        },
-    	{
-    		title: "Sir",
-    		firstname: "Edward",
-    		lastname: "Tailor"
-    	}
-    ];
 
-    function sortObjectsByParam(param){
-        return function (a, b) {
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3</title>
+</head>
+
+<body>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+    var people = [{
+        title: "Mrs",
+        firstname: "Jane",
+        lastname: "Doe"
+    }, {
+        title: "Sir",
+        firstname: "Johnathan",
+        lastname: "Williams"
+    }, {
+        title: "Mr",
+        firstname: "John",
+        lastname: "Andrews"
+    }, {
+        title: "Sir",
+        firstname: "Edward",
+        lastname: "Tailor"
+    }];
+
+    function sortObjectsByParam(param) {
+        return function(a, b) {
             if (a[param] == b[param]) {
                 return 0;
             }
             if (a[param] > b[param]) {
-              return 1;
-            } else{
+                return 1;
+            } else {
                 return -1;
             }
         }
@@ -44,6 +43,7 @@
     people.sort(sortObjectsByParam("lastname"));
     console.log(people);
     </script>
-</head>
-<body></body>
+    <script src="http://localhost:35729/livereload.js"></script>
+</body>
+
 </html>
