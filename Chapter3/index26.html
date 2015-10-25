@@ -30,6 +30,7 @@
         }
     ];
 
+    /** Only shows the people who have the title Sir in console.log */
     function findObjects(parameter, value, object) {
         var matches = [];
         for (var i in object) {
@@ -41,12 +42,9 @@
         }
         return matches;
     }
-    /**
-     * Using console, the people who have the titles (Sir), the data will show.
-     */
+    /** Using console, the people who have the titles (Sir), the data will show. */
     var results = findObjects("title", "Sir", people);
     console.log(results);
     </script>
-    <script src="http://localhost:35729/livereload.js"></script>
 </body>
 </html>
