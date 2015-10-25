@@ -16,6 +16,7 @@
     "grunt-postcss": "^0.5.5",
     "grunt-sass": "~0.18.0",
     "jshint-stylish": "^2.0.1",
+    "load-grunt-tasks": "^3.3.0",
     "node-sass": "~2.0.1"
   }
 }
