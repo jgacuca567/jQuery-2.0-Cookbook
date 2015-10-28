@@ -4,29 +4,30 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>Chapter 3</title>
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script>
-    var cache = [];
-    $(function(){
-    	$('.getPeople').click(function() {
-    		if (cache.length == 0) {
-    			$.ajax({
-    				url: 'request-2.php',
-    				type: 'GET',
-    			}).done(function(data){
-    				cache = data;
-    			});
-    		}
-    		$('#peopleList').empty();
-    		$.each(cache, function(key, value) {
-    			$('#peopleList').append("<li>#") + key + " " + value.firstname + " " + value.lastname + "</li>";
-    		});
-    	});
-    });
-    </script>
 </head>
 <body>
 	<ul id="peopleList"></ul>
 	<button class="getPeople">Get People</button>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+    var cache = [];
+    $(function(){
+        $('.getPeople').click(function() {
+            if (cache.length == 0) {
+                $.ajax({
+                    url: 'request-2.php',
+                    type: 'GET',
+                }).done(function(data){
+                    cache = data;
+                });
+            }
+            $('#peopleList').empty();
+            $.each(cache, function(key, value) {
+                $('#peopleList').append("<li>#") + key + " " + value.firstname + " " + value.lastname + "</li>";
+            });
+        });
+    });
+    </script>
+    <script src="http://localhost:35729/livereload.js"></script>
 </body>
 </html>
