@@ -17,5 +17,8 @@
     "jshint-stylish": "^2.0.1",
     "load-grunt-tasks": "^3.3.0",
     "node-sass": "~2.0.1"
+  },
+  "dependencies": {
+    "normalize-scss": "^3.0.3"
   }
 }
