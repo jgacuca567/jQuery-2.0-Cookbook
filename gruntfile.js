@@ -44,7 +44,7 @@ module.exports = function(grunt) {
                 tasks: ['compass']
             },
             html: {
-                files: ['*.html', 'Chapter3/*.html']
+                files: ['*.html']
             }, //html
             all: {
                 files: '{,**/}*.js',
@@ -78,6 +78,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-force-task');
 
-    grunt.registerTask('build', ['sass']);
-    grunt.registerTask('default', ['build', 'watch', 'compass', 'force:jshint']);
+    grunt.registerTask('default', ['sass', 'watch', 'compass', 'force:jshint']);
 };
