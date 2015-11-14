@@ -1,5 +1,12 @@
 /* ----------- iPhone 4 and 4S ----------- */
 /* Portrait and Landscape */
+@import url("https://fonts.googleapis.com/css?family=Oxygen|Radley://fonts.googleapis.com/css?family=Oxygen|Radley");
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  h1 {
+    font-size: 0.5rem;
+  }
+}
+
 /* Portrait */
 /* Landscape */
 /* ----------- iPhone 5 and 5S ----------- */
@@ -14,9 +21,13 @@
 /* Portrait and Landscape */
 /* Portrait */
 /* Landscape */
-/** Headings */
+/** Headings (Font Family - Sans-Serif[Oxygen]) */
+a, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oxygen', sans-serif;
+}
+
 h1 {
-  text-transform: small-caps;
+  color: #fff;
 }
 
 a {
@@ -27,10 +38,25 @@ a:hover {
   color: #3f5765;
 }
 
+li a {
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+li a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/** Text Align */
 body {
   background-color: #2b3a42;
 }
 
 li {
   list-style: none;
+}
+
+.container {
+  margin: 0 auto;
 }
