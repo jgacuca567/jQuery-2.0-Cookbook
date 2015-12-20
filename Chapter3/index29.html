@@ -1,84 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Chapter 3: Creating a Search Feature</title>
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Chapter 3: Creating a Search Feature</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
+
 <body>
-	<div id="frame">
-		<div class="search">
-			<header class="header">
-				<h1>Chapter 3: Search Feature</h1>
-				<input type="text" id="text">
-				<button id="search">Search</button></input>
-			</header>
-			<div id="results-holder">
-				<div class="loading-holder">
-					<div class="loading"></div>
-				</div>
-				<ul id="results-list"></ul>
-			</div>
-		</div>
-	</div>
-	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <div id='frame'>
+        <div class='search'>
+            <div class='header'>
+                <h1>Chapter 3 :: Search Feature</h1>
+                <input type='text' id='text' />
+                <button id='search'>Search</button>
+            </div>
+            <div id='results-holder'>
+                <div class="loading-holder">
+                    <div class="loading">Loading...</div>
+                </div>
+                <ul id='results-list'></ul>
+            </div>
+        </div>
+    </div>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script>
-	    jQuery(document).ready(function($) {
-	    	/** Hide the result list on load */
-	    	$('#results-list').hide();
+    jQuery(document).ready(function($) {
+    	/** Hide the result list on load */
+        $('#results-list').hide();
+        /** Click event when search button is pressed */
+        $('#search').click(function() {
+            doSearch();
+        });
+        /** Keypress event to see if enter was pressed in text input */
+        $('#text').keydown(function(e) {
+            if (e.keyCode == 13) {
+                doSearch();
+            }
+        });
+    });
 
-	    	/** Click event when search button is pressed */
-	    	$('#search').click(function(event) {
-	    		doSearch();
-	    	});
-
-	    	/** Keypress event to see if enter was pressed in text input */
-	    	$('#text').keydown(function(event) {
-	    		if (event.keyCode == 13) {
-	    			doSearch();
-	    		}
-	    	});
-	    });
-
-	    function doSearch() {
-	    	var searchText = $('#text').val();
-
-	    	/** Rehide the search results */
-	    	$('#results-list').hide();
-	    	$.ajax({
-	    		url: 'search.php',
-	    		type: 'POST',
-	    		data: {
-	    			'text': searchText
-	    		},
-	    		beforeSend : function(){
-	    			$('.loading').fadeIn();
-	    		},
-	    		success: function(data){
-	    			$('.loading').fadeOut();
-
-	    			/** Was everything successful, no errors in the PHP Script */
-	    			if (data.success) {
-	    				$('#results-list').empty();
-	    				if (data.results.length > 0) {
-	    					$.each(data.results, function() {
-	    						$('#results-list').append("<li>" + this.title + "</li>");
-	    					});
-	    				} else {
-	    					$('#results-list').append("<li class='no-results'>Your search did not return any results<li>");
-	    				}
-
-	    				/** Show the results list */
-	    				$('#results-list').fadeIn();
-	    			} else {
-	    				/** Display the error message */
-	    				alert(data.error);
-	    			}
-	    		}
-	    	});
-	    }
+    function doSearch() {
+        var searchText = $('#text').val();
+        /** Rehide the search results */
+        $('#results-list').hide();
+        $.ajax({
+            url: 'search.php',
+            type: 'POST',
+            data: {
+                'text': searchText
+            },
+            beforeSend: function() {
+                $('.loading').fadeIn();
+            },
+            success: function(data) {
+                $('.loading').fadeOut();
+                /** Was everything successful, no errors in the PHP script */
+                if (data.success) {
+                    $('#results-list').empty();
+                    if (data.results.length > 0) {
+                        $.each(data.results, function() {
+                            $('#results-list').append("<li>" + this.title + "</li>");
+                        });
+                    } else {
+                        $('#results-list').append("<li class='no-results'>Your search did not return any results</li>");
+                    }
+                    /** Show the results list */
+                    $('#results-list').fadeIn();
+                } else {
+                	/** Display the error message */
+                    alert(data.error);
+                }
+            }
+        });
+    }
     </script>
-    <script src="http://localhost:35729/livereload.js"></script>
 </body>
+
 </html>
