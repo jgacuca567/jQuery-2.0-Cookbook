@@ -21,10 +21,6 @@
 /* Portrait and Landscape */
 /* Portrait */
 /* Landscape */
-body {
-  font-family: 'Radley', serif;
-}
-
 /** Headings (Font Family - Sans-Serif[Oxygen]) */
 a, h1, h2, h3, h4, h5, h6 {
   font-family: 'Oxygen', sans-serif;
@@ -52,7 +48,17 @@ li a:hover {
   text-decoration: underline;
 }
 
-/** Text Align */
+button {
+  border-radius: 10rem;
+  width: 10rem;
+  margin-left: 1rem;
+}
+
+button:hover {
+  color: #2b3a42;
+  background-color: #fff;
+}
+
 #frame {
   width: 500px;
   margin: 125px auto auto auto;
@@ -90,8 +96,9 @@ li a:hover {
 #results-list li {
   line-height: 30px;
   border-bottom: solid 1px #CCC;
-  padding: 5px 5px 5px 5px 10px;
-  color: #333;
+  padding: 5px 5px 5px 10px;
+  margin-left: 1rem;
+  color: #fff;
 }
 
 #results-list li:last-child {
@@ -104,26 +111,18 @@ li a:hover {
   font-size: 14px;
 }
 
-body, button {
+/** Text Align */
+body, button, li {
+  font-family: 'Radley', serif;
   background-color: #2b3a42;
   color: #fff;
 }
 
 li {
   list-style: none;
+  color: #fff;
 }
 
 .container {
   margin: 0 auto;
-}
-
-button {
-  border-radius: 10rem;
-  width: 10rem;
-  margin-left: 1rem;
-}
-
-button:hover {
-  color: #2b3a42;
-  background-color: #fff;
 }
