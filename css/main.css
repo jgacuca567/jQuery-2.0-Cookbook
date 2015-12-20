@@ -1,6 +1,6 @@
 /* ----------- iPhone 4 and 4S ----------- */
 /* Portrait and Landscape */
-@import url("https://fonts.googleapis.com/css?family=Oxygen|Radley://fonts.googleapis.com/css?family=Oxygen|Radley");
+@import url("//fonts.googleapis.com/css?family=Oxygen|Radley");
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
   /* line 8, ../scss/_mediaqueries.scss */
   h1 {
@@ -21,32 +21,37 @@
 /* Portrait and Landscape */
 /* Portrait */
 /* Landscape */
+/* line 3, ../scss/_typography.scss */
+body {
+  font-family: 'Radley', serif;
+}
+
 /** Headings (Font Family - Sans-Serif[Oxygen]) */
-/* line 4, ../scss/_typography.scss */
+/* line 8, ../scss/_typography.scss */
 a, h1, h2, h3, h4, h5, h6 {
   font-family: 'Oxygen', sans-serif;
 }
 
-/* line 7, ../scss/_typography.scss */
+/* line 11, ../scss/_typography.scss */
 h1 {
   color: #fff;
 }
 
-/* line 21, ../scss/_typography.scss */
+/* line 25, ../scss/_typography.scss */
 a {
   color: #ff7740;
 }
-/* line 23, ../scss/_typography.scss */
+/* line 27, ../scss/_typography.scss */
 a:hover {
   color: #3f5765;
 }
 
-/* line 28, ../scss/_typography.scss */
+/* line 32, ../scss/_typography.scss */
 li a {
   font-size: 1.5rem;
   text-decoration: none;
 }
-/* line 31, ../scss/_typography.scss */
+/* line 35, ../scss/_typography.scss */
 li a:hover {
   color: white;
   text-decoration: underline;
