@@ -112,14 +112,15 @@ li a:hover {
 /* line 9, ../scss/main.scss */
 body {
   background-color: #2b3a42;
+  color: #fff;
 }
 
-/* line 12, ../scss/main.scss */
+/* line 13, ../scss/main.scss */
 li {
   list-style: none;
 }
 
-/* line 15, ../scss/main.scss */
+/* line 16, ../scss/main.scss */
 .container {
   margin: 0 auto;
 }
