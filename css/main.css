@@ -2,11 +2,11 @@
 /* Portrait and Landscape */
 @import url("//fonts.googleapis.com/css?family=Oxygen|Radley");
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
-  /* line 8, ../scss/_mediaqueries.scss */
   h1 {
     font-size: 0.5rem;
   }
 }
+
 /* Portrait */
 /* Landscape */
 /* ----------- iPhone 5 and 5S ----------- */
@@ -21,44 +21,38 @@
 /* Portrait and Landscape */
 /* Portrait */
 /* Landscape */
-/* line 3, ../scss/_typography.scss */
 body {
   font-family: 'Radley', serif;
 }
 
 /** Headings (Font Family - Sans-Serif[Oxygen]) */
-/* line 8, ../scss/_typography.scss */
 a, h1, h2, h3, h4, h5, h6 {
   font-family: 'Oxygen', sans-serif;
 }
 
-/* line 11, ../scss/_typography.scss */
 h1 {
   color: #fff;
 }
 
-/* line 25, ../scss/_typography.scss */
 a {
   color: #ff7740;
 }
-/* line 27, ../scss/_typography.scss */
+
 a:hover {
   color: #3f5765;
 }
 
-/* line 32, ../scss/_typography.scss */
 li a {
   font-size: 1.5rem;
   text-decoration: none;
 }
-/* line 35, ../scss/_typography.scss */
+
 li a:hover {
   color: white;
   text-decoration: underline;
 }
 
 /** Text Align */
-/* line 2, ../scss/_index29.scss */
 #frame {
   width: 500px;
   margin: 125px auto auto auto;
@@ -67,22 +61,19 @@ li a:hover {
   border-radius: 5px;
 }
 
-/* line 11, ../scss/_index29.scss */
 .search .header {
   margin: 25px;
   text-align: center;
 }
-/* line 14, ../scss/_index29.scss */
+
 .search .header .input {
   width: 350px;
 }
 
-/* line 20, ../scss/_index29.scss */
 #results-holder {
   min-height: 200px;
 }
 
-/* line 24, ../scss/_index29.scss */
 .loading {
   text-align: center;
   line-height: 30px;
@@ -90,42 +81,49 @@ li a:hover {
 }
 
 /** Styling for the results list */
-/* line 33, ../scss/_index29.scss */
 #results-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 37, ../scss/_index29.scss */
+
 #results-list li {
   line-height: 30px;
   border-bottom: solid 1px #CCC;
   padding: 5px 5px 5px 5px 10px;
   color: #333;
 }
-/* line 42, ../scss/_index29.scss */
+
 #results-list li:last-child {
   border: none;
 }
-/* line 46, ../scss/_index29.scss */
+
 #results-list .no-results {
   text-align: center;
   font-weight: bold;
   font-size: 14px;
 }
 
-/* line 9, ../scss/main.scss */
-body {
+body, button {
   background-color: #2b3a42;
   color: #fff;
 }
 
-/* line 13, ../scss/main.scss */
 li {
   list-style: none;
 }
 
-/* line 16, ../scss/main.scss */
 .container {
   margin: 0 auto;
+}
+
+button {
+  border-radius: 10rem;
+  width: 10rem;
+  margin-left: 1rem;
+}
+
+button:hover {
+  color: #2b3a42;
+  background-color: #fff;
 }
