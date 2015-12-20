@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chapter 1 - Finding and selecting sibling elements</title>
-	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script>
     $(function(){
     	var element1 = $('#content .top .top-left'); //Select the top left division element
@@ -11,6 +11,7 @@
     	var element3 = $('.parent').find('.grandchild'); //Select the grandchild element
     });
     </script>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 	<div class="division-container">Some text <span>within</span> a div <span>which</span> has many <span>span</span> elements</div>
@@ -37,5 +38,6 @@
 			</div>
 		</div>
 	</div>
+	<script src="http://localhost:35729/livereload.js"></script>
 </body>
 </html>
