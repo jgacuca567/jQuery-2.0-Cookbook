@@ -7,46 +7,40 @@
     <title>Chapter 3: Creating a Search Feature</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
-</head>
 
 <body>
-    <div id="frame">
-        <div class="search">
-            <div class="header">
-                <h1>Chapter 3:: Search Feature</h1>
+    <div id='frame'>
+        <div class='search'>
+            <header class="header">
+                <h1>Chapter 3: Auto Suggest</h1>
+            </header>
+            <div class="suggest-input">
                 <input type="text" id="text">
-                <button id="search"></button>
-            </div>
-            <div id="results-holder">
-                <div class="loading-holder">
-                    <div class="loading">Loading</div>
-                </div>
-                <ul id="results-list">
+                <ul class="suggest-list">
                 </ul>
             </div>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script>
-    $(function() {
-        //Hide the result list on load
-        $('#results-list').hide();
-        //Click event when search button is pressed
-        $('#search').click(function() {
-            doSearch();
-        });
-        //Keypress event to see if enter was pressed in text
-        //input
-        $('#text').keydown(function(e) {
-            if (e.keyCode == 13) {
-                doSearch();
+    jQuery(document).ready(function($) {
+        $('#text').keyup(function(event) {
+            if ($('#text').val().length > 2) {
+                $('.suggest-list').show();
+                makeSuggestion();
+            } else {
+                $('.suggest-list').hide();
             }
+        });
+
+        $('.search').on("click", ".suggestion", function() {
+            $('#text').val($(this).html());
         });
     });
 
-    function doSearch() {
+    function makeSuggestion() {
         var searchText = $('#text').val();
-        //Rehide the search results
+        /** Rehide the search results */
         $('#results-list').hide();
         $.ajax({
             url: 'search.php',
@@ -55,25 +49,22 @@
                 'text': searchText
             },
             beforeSend: function() {
-                $('.loading').fadeIn();
+                $('.suggest-list').append('<li class="loading">Loading...</li>');
             },
             success: function(data) {
-                $('.loading').fadeOut();
-                //Was everything successful, no errors in the PHP
-                //script
                 if (data.success) {
-                    $('#results-list').empty();
+                    $('.suggest-list').empty();
                     if (data.results.length > 0) {
                         $.each(data.results, function() {
-                            $('#results-list').append("<li>" + this.title + "</li>");
+                            $('.suggest-list').append('<li><a href="#" class="suggestion">' + this.title + '</a></li>');
                         });
                     } else {
-                        $('#results-list').append("<li class='no-results'>Your search did not return any results</li>");
+                        $('.suggest-list').append("<li class='no-results'>Nothing to suggest...</li>");
                     }
-                    //Show the results list
+                    /** Show the results list */
                     $('#results-list').fadeIn();
                 } else {
-                    //Display the error message
+                    /** Display the error message */
                     alert(data.error);
                 }
             }
