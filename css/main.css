@@ -60,8 +60,9 @@ button:hover {
 }
 
 #frame {
-  width: 500px;
-  margin: 125px auto auto auto;
+  /** width: 500px */
+  width: 95%;
+  margin: 3% auto auto auto;
   border: solid 1px #CCC;
   box-shadow: 0 0 10px #CCC;
   border-radius: 5px;
@@ -109,6 +110,29 @@ button:hover {
   text-align: center;
   font-weight: bold;
   font-size: 14px;
+}
+
+/** Index 30 */
+.suggest-input {
+  position: relative;
+  padding: 25px;
+}
+
+.suggest-input input {
+  width: 100%;
+}
+
+.suggest-list {
+  position: absolute;
+  width: 40%;
+  background-color: #CCC;
+  margin: 0;
+  left: 25px;
+  top: 50px;
+  z-index: 100;
+  display: none;
+  list-style: none;
+  padding: 0.2%;
 }
 
 /** Text Align */
