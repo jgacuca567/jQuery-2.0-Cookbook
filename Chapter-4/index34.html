@@ -8,10 +8,26 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
+<h1>Fading Elements</h1>
+<div class="frame">
+    <div class="top">
+        <label for="">Add Item:</label>
+        <input type="text" id="new-item">
+        <button id="add-new-item">Add</button>
+    </div>
+    <ol class="list"></ol>
+</div>
 	<script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script>
 	    jQuery(document).ready(function($) {
-	    	
+	    	$('#add-new-item').click(function(event) {
+                var item = $('#new-item').val();
+                if (item.length > 0) {
+                    var newItem = $("<li>" + item + "</li>").fadeIn();
+                    $('.list').append(newItem);
+                    $('#new-item').val(""); 
+                }
+            });
 	    });
     </script>
     <script src="http://localhost:35729/livereload.js"></script>
