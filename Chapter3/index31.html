@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Chapter 3</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+
+<body>
+    <button class="load">Load</button>
+    <div class="info"></div>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+    jQuery(document).ready(function($) {
+        $('.load').click(function(event) {
+            $.when(call1(), call2()).done(function(c1, c2) {
+                $('.info').append(' Both Ajax requests complete!');
+            });
+        });
+    });
+
+    function call1() {
+        return $.ajax({
+            url: 'loading1.php',
+            type: 'GET'
+        }).success(function(data) {
+            $('.info').append(data);
+        });
+    }
+
+    function call2() {
+        return $.ajax({
+            url: 'loading2.php',
+            type: 'GET'
+        }).success(function(data) {
+            $('.info').append(data);
+        });
+    }
+    </script>
+    <script src="http://localhost:35729/livereload.js"></script>
+</body>
+
+</html>
