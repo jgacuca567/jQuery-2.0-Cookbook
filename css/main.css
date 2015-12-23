@@ -68,6 +68,28 @@ button:hover {
   border-radius: 5px;
 }
 
+#frame .box {
+  width: 125px;
+  height: 125px;
+  float: left;
+  margin-right: 1rem;
+}
+
+#frame .box :last-child {
+  margin-right: 0;
+}
+
+#frame .actions {
+  background-color: #bdd4de;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+#frame .actions button {
+  height: 0.35rem;
+}
+
 .search .header {
   margin: 25px;
   text-align: center;
@@ -133,6 +155,22 @@ button:hover {
   display: none;
   list-style: none;
   padding: 0.2%;
+}
+
+.one {
+  background-color: #3f5765;
+}
+
+.two {
+  background-color: #efefef;
+}
+
+.three {
+  background-color: #ff530d;
+}
+
+.four {
+  background-color: #fff;
 }
 
 /** Text Align */

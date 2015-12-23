@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Chapter 4: jQuery Effects</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+
+<body>
+    <div class="frame">
+        <div class="actions">
+            <button id="down">Slide Down</button>
+            <button id="up">Slide Up</button>
+            <button id="toggle">Toggle</button>
+        </div>
+        <div class="box one"></div>
+        <div class="box two"></div>
+        <div class="box three"></div>
+        <div class="box four"></div>
+    </div>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+    jQuery(document).ready(function($) {
+        $('#up').click(function(event) {
+            $('.one').slideUp(4000);
+            $('.two').slideUp(3000);
+            $('.three').slideUp(2000);
+            $('.four').slideUp(1000);
+        });
+
+        $('#down').click(function(event) {
+            $('.one').slideDown(4000);
+            $('.two').slideDown(3000);
+            $('.three').slideDown(2000);
+            $('.four').slideDown(1000);
+        });
+
+        $('#toggle').click(function(event) {
+            $('.one').slideToggle(4000);
+            $('.two').slideToggle(3000);
+            $('.three').slideToggle(2000);
+            $('.four').slideToggle(1000);
+        });
+    });
+    </script>
+    <script src="http://localhost:35729/livereload.js"></script>
+</body>
+
+</html>
