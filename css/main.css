@@ -49,19 +49,20 @@ li a:hover {
 }
 
 button {
+  background-color: #2b3a42;
+  color: #fff;
   border-radius: 10rem;
   width: 10rem;
   margin-left: 1rem;
 }
 
 button:hover {
-  color: #2b3a42;
-  background-color: #fff;
+  color: #fff;
+  background-color: #d4c5bd;
 }
 
 #frame {
-  /** width: 500px */
-  width: 95%;
+  width: 500px;
   margin: 3% auto auto auto;
   border: solid 1px #CCC;
   box-shadow: 0 0 10px #CCC;
@@ -178,6 +179,16 @@ button:hover {
 
 .four {
   background-color: #fff;
+}
+
+.top {
+  background-color: #ff9b73;
+  padding: 10px;
+  text-align: center;
+}
+
+.list li {
+  line-height: 30px;
 }
 
 body, li {
