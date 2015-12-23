@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Chapter 4: jQuery Effects</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+
+<body>
+	<h1 class="text-center">Hiding and Showing Elements</h1>
+	<button class="show">Show</button>
+	<button class="hide">Hide</button>
+	<p class="text">Hiding and showing HTML elements with jQuery is so easy</p>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+    jQuery(document).ready(function($) {
+    	/** Show Elements */
+    	$('.show').click(function(event) {
+    		$('.text').show();
+    	});
+
+    	/** Hide Elements */
+    	$('.hide').click(function(event) {
+    		$('.text').hide();
+    	});
+
+    });
+    </script>
+</body>
+
+</html>
