@@ -9,11 +9,10 @@
 </head>
 
 <body>
-    <div class="frame">
+    <div class="frameffect">
         <div class="actions">
-            <button id="down">Slide Down</button>
             <button id="up">Slide Up</button>
-            <button id="toggle">Toggle</button>
+            <button id="down">Slide Down</button>
         </div>
         <div class="box one"></div>
         <div class="box two"></div>
@@ -35,13 +34,6 @@
             $('.two').slideDown(3000);
             $('.three').slideDown(2000);
             $('.four').slideDown(1000);
-        });
-
-        $('#toggle').click(function(event) {
-            $('.one').slideToggle(4000);
-            $('.two').slideToggle(3000);
-            $('.three').slideToggle(2000);
-            $('.four').slideToggle(1000);
         });
     });
     </script>

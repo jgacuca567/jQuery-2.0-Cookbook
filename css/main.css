@@ -68,26 +68,33 @@ button:hover {
   border-radius: 5px;
 }
 
-#frame .box {
+.frameffect {
+  width: 530px;
+  height: 190px;
+  margin: 50px auto auto auto;
+  background-color: #333;
+}
+
+.frameffect .box {
   width: 125px;
   height: 125px;
   float: left;
-  margin-right: 1rem;
+  margin-right: 10px;
 }
 
-#frame .box :last-child {
+.frameffect .box:last-child {
   margin-right: 0;
 }
 
-#frame .actions {
+.frameffect .actions {
   background-color: #bdd4de;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
   text-align: center;
-  padding: 1rem;
+  padding: 10px;
 }
 
-#frame .actions button {
-  height: 0.35rem;
+.frameffect .actions button {
+  height: 35px;
 }
 
 .search .header {
