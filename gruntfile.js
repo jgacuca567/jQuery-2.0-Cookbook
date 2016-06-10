@@ -15,14 +15,6 @@ module.exports = function(grunt) {
             }
         }, // sass
 
-        compass: {
-            dev: {
-                options: {
-                    config: 'config.rb'
-                }
-            } // dev
-        }, //compass
-
         watch: {
             options: {
                 livereload: true,
@@ -71,12 +63,7 @@ module.exports = function(grunt) {
         } //jshint
     });
 
-    grunt.loadNpmTasks('grunt-sass');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-compass');
-    grunt.loadNpmTasks('grunt-postcss');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-force-task');
+    require('load-grunt-tasks')(grunt);
 
-    grunt.registerTask('default', ['sass', 'watch', 'compass', 'force:jshint']);
+    grunt.registerTask('default', ['sass', 'watch', 'compass', 'force:jshint', 'autoupdate', 'openport:watch.options.livereload:35729']);
 };
