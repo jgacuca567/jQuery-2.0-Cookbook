@@ -6,3 +6,4 @@
 3. Import Text Align Class
 4. <del>Restart at Index 30 concerning the search page</del>
 5. Start at Index 35: Toggling effects Chapter 4
+6. Review button designs, see examples from Bootstrap and Foundation 6
