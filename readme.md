@@ -4,4 +4,5 @@
 	a. Sans Serif - Oxygen
 	b. Serif - Radley</del>
 3. Import Text Align Class
-4. Restart at Index 30 concerning the search page
+4. <del>Restart at Index 30 concerning the search page</del>
+5. Start at Index 32
