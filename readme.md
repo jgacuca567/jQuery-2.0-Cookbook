@@ -5,4 +5,4 @@
 	b. Serif - Radley</del>
 3. Import Text Align Class
 4. <del>Restart at Index 30 concerning the search page</del>
-5. Start at Index 32
+5. Start at Index 35: Toggling effects Chapter 4
