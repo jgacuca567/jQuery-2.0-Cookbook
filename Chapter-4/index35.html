@@ -11,12 +11,23 @@
 <h1 class="text-center">jQuery 2 Development Cookbook</h1>
 <h2>Toggling effects</h2>
 <div class="container">
-
+    <button class="fadeToggle">Toggle Fade !</button>
+    <button class="slideToggle">Toggle Slide !</button>
+    <button class="hideToggle">Toggle Hide !</button>
+    <p class="text">Here is some text that can be faded in and out! Here is some text that can be faded in and out! Here is some text that can be faded in and out! Here is some text that can be faded in and out! Here is some text that can be faded in and out! Here is some text that can be faded in and out! Here is some text that can be faded in and out! Here is some text that can be faded in and out! Here is some text that can be faded in and out! Here is some text that can be faded in and out! Here is some text that can be faded in and out! Here is some text that can be faded in and out!</p>
 </div>
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script>
 	    jQuery(document).ready(function($) {
-
+	    	$('.fadeToggle').click(function(event) {
+	    		$('.text').fadeToggle();
+	    	});
+	    	$('.slideToggle').click(function(event) {
+	    		$('.text').slideToggle();
+	    	});
+	    	$('.hideToggle').click(function(event) {
+	    		$('.text').toggle();
+	    	});
 	    });
     </script>
 </body>
