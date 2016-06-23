@@ -33,7 +33,7 @@ module.exports = function(grunt) {
             }, //sass
             css: {
                 files: ['scss/*.scss'],
-                tasks: ['compass']
+                tasks: ['sass']
             },
             html: {
                 files: ['{,**/}*.html']
@@ -58,12 +58,12 @@ module.exports = function(grunt) {
             options: {
                 reporter: require('jshint-stylish')
             },
-            target: ['*.js', 'js/*.js'], 
+            target: ['*.js', 'js/*.js'],
             all: ['*.js', 'js/*.js']
         } //jshint
     });
 
     require('load-grunt-tasks')(grunt);
 
-    grunt.registerTask('default', ['sass', 'watch', 'compass', 'force:jshint', 'autoupdate', 'openport:watch.options.livereload:35729']);
+    grunt.registerTask('default', ['autoupdate', 'sass', 'watch', 'force:jshint', 'openport:watch.options.livereload:35729']);
 };
