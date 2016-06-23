@@ -49,53 +49,22 @@ li a:hover {
 }
 
 button {
-  background-color: #2b3a42;
-  color: #fff;
   border-radius: 10rem;
   width: 10rem;
   margin-left: 1rem;
 }
 
 button:hover {
-  color: #fff;
-  background-color: #d4c5bd;
+  color: #2b3a42;
+  background-color: #fff;
 }
 
 #frame {
   width: 500px;
-  margin: 3% auto auto auto;
+  margin: 125px auto auto auto;
   border: solid 1px #CCC;
   box-shadow: 0 0 10px #CCC;
   border-radius: 5px;
-}
-
-.frameffect {
-  width: 530px;
-  height: 190px;
-  margin: 50px auto auto auto;
-  background-color: #333;
-}
-
-.frameffect .box {
-  width: 125px;
-  height: 125px;
-  float: left;
-  margin-right: 10px;
-}
-
-.frameffect .box:last-child {
-  margin-right: 0;
-}
-
-.frameffect .actions {
-  background-color: #bdd4de;
-  margin-bottom: 10px;
-  text-align: center;
-  padding: 10px;
-}
-
-.frameffect .actions button {
-  height: 35px;
 }
 
 .search .header {
@@ -142,56 +111,8 @@ button:hover {
   font-size: 14px;
 }
 
-/** Index 30 */
-.suggest-input {
-  position: relative;
-  padding: 25px;
-}
-
-.suggest-input input {
-  width: 100%;
-}
-
-.suggest-list {
-  position: absolute;
-  width: 40%;
-  background-color: #CCC;
-  margin: 0;
-  left: 25px;
-  top: 50px;
-  z-index: 100;
-  display: none;
-  list-style: none;
-  padding: 0.2%;
-}
-
-.one {
-  background-color: #3f5765;
-}
-
-.two {
-  background-color: #efefef;
-}
-
-.three {
-  background-color: #ff530d;
-}
-
-.four {
-  background-color: #fff;
-}
-
-.top {
-  background-color: #ff9b73;
-  padding: 10px;
-  text-align: center;
-}
-
-.list li {
-  line-height: 30px;
-}
-
-body, li {
+/** Text Align */
+body, button, li {
   font-family: 'Radley', serif;
   background-color: #2b3a42;
   color: #fff;
