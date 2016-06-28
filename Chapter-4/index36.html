@@ -11,11 +11,30 @@
 	<div class="container">
 		<h1 class="text-center">jQuery 2 Development Cookbook</h1>
 		<h2>Stopping effects</h2>
+		<div class="frame">
+		    <div class="actions">
+		        <button id="slide">Slide</button>
+		        <button id="stop">Stop</button>
+		        <button id="finish">Finish</button>
+		    </div>
+		    <ul class="output"></ul>
+		    <div class="slideMe"></div>
+		</div>
 	</div>
-	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script>
 	    jQuery(document).ready(function($) {
-
+            $('#slide').click(function() {
+            	$('.slideMe').slideToggle(1000, function(){
+            		$('.output').append('<li>Slide effect completed.</li>');
+            	});
+            	$('#stop').click(function() {
+            		$('.slideMe').stop();
+            	});
+            	$('#finish').click(function() {
+            		$('.slideMe').finish();
+            	});
+            });
 	    });
     </script>
 </body>
