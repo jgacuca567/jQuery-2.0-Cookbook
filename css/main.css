@@ -130,6 +130,12 @@ button:hover {
   margin-top: 10px;
 }
 
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+
 /** Text Align */
 body, button, li {
   font-family: 'Radley', serif;
