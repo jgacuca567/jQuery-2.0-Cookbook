@@ -7,3 +7,7 @@
 4. <del>Restart at Index 30 concerning the search page</del>
 5. Start at Index 36: Stopping effects Chapter 4
 6. Review button designs, see examples from Bootstrap and Foundation 6
+
+## Things I learnt
+1. How to create Autocomplete Search
+2. How to use AJAX to read SQL data
