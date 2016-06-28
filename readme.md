@@ -11,3 +11,4 @@
 ## Things I learnt
 1. How to create Autocomplete Search
 2. How to use AJAX to read SQL data
+3. Use of Multiple jQuery Events Together at Once
