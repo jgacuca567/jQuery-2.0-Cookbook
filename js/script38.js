@@ -59,4 +59,3 @@ function updateScrollButtons() {
         $('.right-arrow').removeClass('disabled');
     }
 }
-s
