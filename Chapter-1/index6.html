@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chapter 1</title>
-    <link rel="stylesheet" href="../css/main.css">	<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/main.css">	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script>
     $(function(){
     	//Listen for a click event on the green button
@@ -24,28 +24,28 @@
     		$('#sometext').addClass('red');
     	});
 
-    	//Listen for a click event on the yellow button
+    	//Listen for a click event on the darkblue button
     	$('#yellow-btn').click(function() {
-    		/* When the yellow button has been clicked, Remove all classses current on the #sometext paragraph*/
+    		/* When the darkblue button has been clicked, Remove all classses current on the #sometext paragraph*/
     		$('#sometext').removeClass();
 
-    		//Add the .yellow class to the #sometext paragraph
+    		//Add the .darkblue class to the #sometext paragraph
     		$('#sometext').addClass('yellow');
     	});
     });
     </script>
     <style>
 		.green{
-			background-color: #008000;
-			color: #FFFFFF;
+			background-color: #167F39;
+			color: white;
 		}
 		.red{
-			background-color: #FF0000;
-			color: #FFFFFF;
+			background-color: #B9121B;
+			color: white;
 		}
 		.yellow{
-			background-color: #FFFF00;
-			color: #000000;
+			background-color: #FFE11A;
+			color: white;
 		}
     </style>
 </head>
