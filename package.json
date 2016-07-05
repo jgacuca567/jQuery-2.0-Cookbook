@@ -21,7 +21,9 @@
     "node-sass": "^3.8.0"
   },
   "dependencies": {
+    "font-awesome": "^4.6.3",
     "jquery": "^3.0.0",
+    "jquery-ui": "^1.10.5",
     "normalize-scss": "^3.0.3"
   },
   "description": "1. <del>Install SASS</del> 2. <del>Setup 2 Fonts From Google \ta. Sans Serif - Oxygen \tb. Serif - Radley</del> 3. Import Text Align Class 4. <del>Restart at Index 30 concerning the search page</del> 5. Start at Index 35: Toggling effects Chapter 4 6. Review button designs, see examples from Bootstrap and Foundation 6",
