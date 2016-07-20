@@ -1,82 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Chapter 4:: jQuery Effects</title>
-	<style>
-		@import url(http://fonts.googleapis.com/css?family=Lato);
-		body{
-			background-color: #333333;
-			font-family: 'Lato', sans-serif;
-		}
-		h1{
-			line-height: 60px;
-			padding: 0;
-			margin: 0 0 15px 0;
-			text-align: center;
-			color: #333;
-			font-weight: 300;
-		}
-		.frame{
-			width: 700px;
-			margin: 50px auto auto auto;
-			background-color: #FFF;
-			box-shadow: #000 3px 3px 2px;
-			border-radius: 10px;
-			padding: 20px;
-			text-align: center;
-		}
-	</style>
-	<script src="js/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Chapter 4: jQuery Effects</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link href="../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<head>
+    <style>
+    .frame {
+        border-radius: 10px;
+        box-shadow: #000 3px 3px 2px;
+        text-align: center;
+        width: 95%;
+        margin: 50px auto auto auto;
+        padding: 20px;
+    }
+    </style>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script>
-    $(function(){
-        /*Used to Delete data from a table*/
-    	$('#user-table').on('click', '.delete', function() {
-    		var response = confirm("Are you sure you want to delete the user?");
-    		if (response) {
-    			$(this).parent().parent().fadeOut().remove();
-    		}
-    	});
+    jQuery(document).ready(function($) {
+        /** Used to delete data from a table */
+        $('#user-table').on('click', '.delete', function() {
+            var response = confirm('Are you sure you want to delete the user?');
+            if (response) {
+                $(this).parent().parent().fadeOut().remove();
+            }
+        });
     });
     </script>
 </head>
+
 <body>
-	<div class="frame">
-		<h1>User Management</h1>
-		<table width="100%" id="user-table">
-			<thead>
-				<tr>
-					<th>Username</th>
-					<th>Email</th>
-					<th>Full Name</th>
-					<th>Date of Birth</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>jd101</td>
-					<td>j.doe@somewhere.com</td>
-					<td>John Doe</td>
-					<td>16-05-1987</td>
-					<td><button class="delete">Delete</button></td>
-				</tr>
-				<tr>
-					<td>msmith17</td>
-					<td>smithy@nowhere.com</td>
-					<td>Jane Smith</td>
-					<td>18-08-1988</td>
-					<td><button class="delete">Delete</button></td>
-				</tr>
-				<tr>
-					<td>tommy22</td>
-					<td>tom@idontknow.com</td>
-					<td>Thomas Knowhow</td>
-					<td>10-08-1980</td>
-					<td><button class="delete">Delete</button></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+    <div class="container">
+        <h1 class="text-center">jQuery 2 Development Cookbook</h1>
+        <h2>Creating a User Management Table</h2>
+    </div>
+    <div class="frame">
+        <h3>User Management</h3>
+        <table width="100%" id="user-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                    <th>Date of Birth</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>jd101</td>
+                    <td>j.doe@somewhere.com</td>
+                    <td>John Doe</td>
+                    <td>16-05-1987</td>
+                    <td>
+                        <button class="delete">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>msmith17</td>
+                    <td>smithy@nowhere.com</td>
+                    <td>Jane Smith</td>
+                    <td>18-08-1988</td>
+                    <td>
+                        <button class="delete">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>tommy22</td>
+                    <td>tom@idontknow.com</td>
+                    <td>Thomas Knowhow</td>
+                    <td>10-08-1980</td>
+                    <td>
+                        <button class="delete">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>
