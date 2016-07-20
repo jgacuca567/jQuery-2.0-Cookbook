@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Chapter 4: jQuery Effects</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link href="../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #333;
+    }
+    
+    .gallery {
+        width: 600px;
+        margin: 50px auto auto auto;
+        position: relative;
+    }
+    
+    .gallery .frame {
+        height: 450px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+    
+    .gallery .frame img {
+        display: block;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .gallery .bottom {
+        overflow: hidden;
+    }
+    
+    .gallery .thumbs {
+        height: 120px;
+        white-space: nowrap;
+        text-align: center;
+    }
+    
+    .gallery .thumbs a {
+        display: inline-block;
+        opacity: 0.5;
+        -webkit-transition: opacity 0.5s ease-in-out;
+        -moz-transition: opacity 0.5s ease-in-out;
+        -ms-transition: opacity 0.5s ease-in-out;
+        -o-transition: opacity 0.5s ease-in-out;
+        transition: opacity 0.5s ease-in-out;
+    }
+    
+    .gallery .thumbs a:hover {
+        opacity: 1.0;
+    }
+    
+    .gallery .arrow {
+        width: 50px;
+        height: 50px;
+        background-color: #000;
+        position: absolute;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        border-radius: 50px;
+        bottom: 35px;
+    }
+    
+    .gallery .arrow.disabled {
+        background-color: #252525;
+    }
+    
+    .gallery .left-arrow {
+        left: -60px;
+    }
+    
+    .gallery .right-arrow {
+        right: -60px;
+    }
+    
+    .gallery .arrow-right {
+        width: 0;
+        height: 0;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        border-left: 12px solid #1a1a1a;
+        position: absolute;
+        right: 16px;
+        top: 13px;
+    }
+    
+    .gallery .arrow-left {
+        width: 0;
+        height: 0;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        border-right: 12px solid #1a1a1a;
+        position: absolute;
+        right: 21px;
+        top: 13px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">jQuery 2 Development Cookbook</h1>
+        <h2>Creating a basic photo gallery</h2>
+    </div>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+    /** DECLARE SOME DEFAULT VARIABLES WHICH WILL BE USED THROUGHOUT **/
+    var images;
+    var imageWidth;
+    $(function() {
+        imageWidth = $('.gallery').data("thumb-width");
+        /** COLLECT ALL THE IMAGES FROM WITHIN THE .gallery DIV **/
+        images = $('.gallery').find('img');
+        /** FOR EACH OF THESE IMAGES, CREATE A THUMBNAIL AND ADD A CLASS TO IDENTIFY THE IMAGE AND THUMBNAIL RELATIONSHIP **/
+        $.each(images, function(index, value) {
+            $(value).addClass("img" + index);
+            $('.gallery .thumbs').append("<a href='#' data-index='" + index + "' class='thumb'><img src='" + $(this).prop("src") + "' width='" + imageWidth + "' height='120' border='0' /></a>");
+        });
+        /** UPDATE THE SCROLL BUTTONS **/
+        updateScrollButtons();
+        /** EVENT HANDLERS FOR SCROLL BUTTONS **/
+        $('.arrow').click(function() {
+            var element = $(this);
+            if (!element.hasClass('disabled')) {
+                element.addClass('disabled');
+                var scrollString = "-=";
+                if ($(this).data("direction") == "left") {
+                    scrollString = "+=";
+                }
+                $('.thumbs').animate({
+                    marginLeft: scrollString + imageWidth + "px"
+                }, "fast", function() {
+                    element.removeClass('disabled');
+                    updateScrollButtons();
+                });
+            }
+        });
+        /** EVENT HANDLERS FOR IMAGES **/
+        $('.gallery').on("click", ".thumb", function() {
+            var thumb = $(this);
+            var image = $('.img' + thumb.data('index'));
+            $.each(images, function(index, value) {
+                if (!$(value).hasClass('img' + thumb.data('index'))) {
+                    $(value).hide();
+                }
+            });
+            if (image.css("display") != "block") {
+                image.fadeIn();
+            }
+        });
+    });
+
+    function updateScrollButtons() {
+        var thumbs = $('.thumbs');
+        var thumbsMarginLeft = parseInt(thumbs.css("margin-left"));
+        var thumbsMaxWidth = (images.length * imageWidth);
+        if (thumbsMarginLeft >= 0) {
+            $('.left-arrow').addClass('disabled');
+        } else {
+            $('.left-arrow').removeClass('disabled');
+        }
+        if ((thumbsMarginLeft * -1) >= (thumbsMaxWidth - thumbs.width() / 2)) {
+            $('.right-arrow').addClass('disabled');
+        } else {
+            $('.right-arrow').removeClass('disabled');
+        }
+    }
+    </script>
+    <div class="gallery" data-thumb-width="150">
+        <div class="frame">
+            <img src="../images/Chrysanthemum.jpg" />
+            <img src="../images/Desert.jpg" />
+            <img src="../images/Hydrangeas.jpg" />
+            <img src="../images/Jellyfish.jpg" />
+            <img src="../images/Koala.jpg" />
+            <img src="../images/Lighthouse.jpg" />
+            <img src="../images/Penguins.jpg" />
+            <img src="../images/Tulips.jpg" />
+        </div>
+        <div class="bottom">
+            <a href="#" class="arrow left-arrow" data-direction="left"><i class="arrow-left"></i></a>
+            <a href="#" class="arrow right-arrow" data-direction="right"><i class="arrow-right"></i></a>
+            <div class="thumbs"></div>
+        </div>
+    </div>
+</body>
+
+</html>
