@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Chapter 4: jQuery Effects</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link href="../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style>
+        .frame{
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            height: 300px;
+        }
+        .frame p{
+            font-size: 18px;
+            line-height: 25px;
+        }
+        .frame form .email-input{
+            height: 40px;
+            font-size: 30px;
+            width: 400px;
+        }
+        .frame form .blinker{
+            height: 40px;
+            width: 150px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">jQuery 2 Development Cookbook</h1>
+        <h2>Creating a blinking button</h2>
+        <div class="frame">
+            <h3>Newsletter</h3>
+            <p>Enter your email address below to sign up for our monthly newsletter</p>
+            <form action="">
+                <input type="text" class="email-input" name="email" placeholder="Your Email">
+                <button class="blinker">Sign Up Now!</button>
+            </form>
+        </div>
+    </div>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+           $('.email-input').on('focus', function() {
+                $('.blinker').fadeTo(300, 0.1).fadeTo(300, 1);
+           });
+        });
+    </script>
+</body>
+</html>
