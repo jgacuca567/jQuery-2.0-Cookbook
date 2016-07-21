@@ -90,51 +90,43 @@
     		/* Prevent form submission */
     		event.preventDefault();
     		var inputs = $('input');
-    		doValidation(input);
-    		function doValidation(input){
-    			var isError = false;
+    		var isError = false;
     		//Remove old errors
     		$('.input-frame').removeClass('error');
     		$('.error-data').remove();
-    			for (var i = 0; i < inputs.length; i++) {
-    				var input = inputs[i];
-    				/*Requiring the data*/
-    				if ($(input).hasClass('required') && !validateRequired($(input).val())) {
-    					addErrorData($(input), "This is a required field");
-    					isError = true;
-    				}
-    				/*Checking the telephone tab only where number should be added in the data field*/
-    				if ($(input).hasClass('number') && !validateNumber($(input).val())) {
-    					addErrorData($(input), "This field can only contain numbers");
-    					isError = true;
-    				}
-    				/*Checking whether a credit card has been inserted*/
-    				if ($(input).hasClass('credit-card') && !validateCreditCard($(input).val())) {
-    					addErrorData($(input), "Invalid credit card number");
-    					isError = true;
-    				}
-    				/*Checking whether a date value has been inserted*/
-    				if ($(input).hasClass('date') && !validateDate($(input).val())) {
-    					addErrorData($(input), "Invalid date provided");
-    					isError = true;
-    				}
-    				/*Checking whether the email is valid*/
-    				if ($(input).hasClass('email') && !validateEmail($(input).val())) {
-    					addErrorData($(input), "Invalid email address provided");
-    					isError = true;
-    				}
+    		for (var i = 0; i < inputs.length; i++) {
+    			var input = inputs[i];
+    			/*Requiring the data*/
+    			if ($(input).hasClass('required') && !validateRequired($(input).val())) {
+    				addErrorData($(input), "This is a required field");
+    				isError = true;
     			}
-    			$('input').on('keyup', function() {
-    				doValidation($(this));
-    			}); 
+    			/*Checking the telephone tab only where number should be added in the data field*/
+    			if ($(input).hasClass('number') && !validateNumber($(input).val())) {
+    				addErrorData($(input), "This field can only contain numbers");
+    				isError = true;
+    			}
+    			/*Checking whether a credit card has been inserted*/
+    			if ($(input).hasClass('credit-card') && !validateCreditCard($(input).val())) {
+    				addErrorData($(input), "Invalid credit card number");
+    				isError = true;
+    			}
+    			/*Checking whether a date value has been inserted*/
+    			if ($(input).hasClass('date') && !validateDate($(input).val())) {
+    				addErrorData($(input), "Invalid date provided");
+    				isError = true;
+    			}
+    			/*Checking whether the email is valid*/
+    			if ($(input).hasClass('email') && !validateEmail($(input).val())) {
+    				addErrorData($(input), "Invalid email address provided");
+    				isError = true;
+    			}
     		}
-    		
-    		if ($('error-data').length == 0) {
+    		if (isError === false) {
     			//No errors, submit the form
     			$('#webForm').submit();
     		}
-    	}); 
-    			
+    	});  		
     });
     	
     function validateRequired(value){
