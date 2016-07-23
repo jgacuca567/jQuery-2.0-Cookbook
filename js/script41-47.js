@@ -24,6 +24,12 @@
                     isError = true;
                 }
 
+                /** Credit Card Validation */
+                if ($(input).hasClass('credit-card') && !validateCreditCard($(input).val())) {
+                    addErrorData($(input), "Invalid credit card number");
+                    isError = true;
+                }
+
                 if (isError === false) {
                     //No errors, submit the form
                     $('#webForm').submit();
@@ -41,6 +47,13 @@
         if (value !== "") {
             return !isNaN(parseInt(value, 10)) && isFinite(value);
             //isFinite, in case letter is on the end
+        }
+        return true;
+    }
+
+    function validateCreditCard(value){
+        if (value !== "") {
+            return /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/.test(value);
         }
         return true;
     }
