@@ -201,7 +201,7 @@ form {
   background-color: #333;
   border-radius: 5px;
   margin: 10px auto auto auto;
-  color: #747474;
+  color: #bdd4de;
   border: solid 2px #000;
 }
 
@@ -238,10 +238,10 @@ form input:focus {
 }
 
 form .header {
-  margin: -20px -20px 25px 20px;
+  margin: -20px -20px 20px;
   padding: 10px 10px 10px 20px;
   position: relative;
-  background-color: #DB7400;
+  background-color: #ff7740;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -264,7 +264,7 @@ form .header h1 {
 
 .error-data {
   color: red;
-  font-size: 11px;
+  font-size: 14px;
   position: absolute;
   bottom: -15px;
   left: 30%;
@@ -272,12 +272,15 @@ form .header h1 {
 
 /** Text Align */
 .submit-btn {
-  background-color: #ff7740;
   border: solid 1px #000;
   border-radius: 10px;
   color: #FFF;
   padding: 10px 20px 10px 20px;
   cursor: pointer;
+  transition: all 0.5s ease;
+  background-color: #ff7740;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 .submit-btn:hover {
