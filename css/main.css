@@ -22,7 +22,7 @@
 /* Portrait */
 /* Landscape */
 /** Headings (Font Family - Sans-Serif[Oxygen]) */
-a, h1, h2, h3, h4, h5, h6 {
+a, h1, h2, h3, h4, h5, h6, label {
   font-family: 'Oxygen', sans-serif;
 }
 
@@ -46,17 +46,6 @@ li a {
 li a:hover {
   color: white;
   text-decoration: underline;
-}
-
-button {
-  border-radius: 10rem;
-  width: 10rem;
-  margin-left: 1rem;
-}
-
-button:hover {
-  color: #2b3a42;
-  background-color: #fff;
 }
 
 #frame {
