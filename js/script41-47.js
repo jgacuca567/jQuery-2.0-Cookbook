@@ -36,6 +36,12 @@
                     isError = true;
                 }
 
+                /*Checking whether the email is valid*/
+                if ($(input).hasClass('email') && !validateEmail($($(input)).val())) {
+                    addErrorData($(input), "Invalid email address provided");
+                    isError = true;
+                }
+
                 if (isError === false) {
                     //No errors, submit the form
                     $('#webForm').submit();
@@ -43,11 +49,6 @@
             }
         });
     });
-
-    function validateRequired(value) {
-        if (value === "") return false;
-        return true;
-    }
 
     function validateNumber(value) {
         if (value !== "") {
@@ -62,11 +63,6 @@
             return /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/.test(value);
         }
         return true;
-    }
-
-    function addErrorData(element, error) {
-        element.parent().addClass('error');
-        element.after("<div class='error-data'>" + error + "</div>");
     }
 
     function validateDate(value) {
@@ -86,4 +82,21 @@
         } else {
             return true;
         }
+    }
+
+    function validateEmail(value) {
+        if (value !== "") {
+            return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i.test(value);
+        }
+        return true;
+    }
+
+    function validateRequired(value) {
+        if (value === "") return false;
+        return true;
+    }
+
+    function addErrorData(element, error) {
+        element.parent().addClass('error');
+        element.after("<div class='error-data'>" + error + "</div>");
     }
