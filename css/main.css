@@ -259,11 +259,35 @@ form .header h1 {
   left: 30%;
 }
 
+.password-strength {
+  position: absolute;
+  width: 150px;
+  height: 20px;
+  left: 69%;
+  top: 35px;
+  line-height: 20px;
+  border: solid 1px black;
+}
+
+.password-strength .inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.password-strength .text {
+  font-size: 11px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
 /** Text Align */
 .submit-btn {
-  border: solid 1px #000;
+  border: solid 1px black;
   border-radius: 10px;
-  color: #FFF;
+  color: #fff;
   padding: 10px 20px 10px 20px;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -273,7 +297,7 @@ form .header h1 {
 }
 
 .submit-btn:hover {
-  background-color: #FFF;
+  background-color: #fff;
   color: #ff7740;
 }
 
