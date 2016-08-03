@@ -1,225 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Chapter 5 Form Handling</title>
-	<link rel="stylesheet" href="../css/main.css">	<style>
-		@import url(http://fonts.googleapis.com/css?family=Ubuntu);
-		body{
-			background-color: #FFF;
-			font-family: 'Ubuntu', sans-serif;
-		}
-		form{
-			width: 500px;
-			padding: 20px;
-			background-color: #333;
-			border-radius: 5px;
-			margin: 10px auto auto auto;
-			color: #747474;
-			border: solid 2px #000;
-		}
-		form label{
-			font-size: 14px;
-			line-height: 30px;
-			width: 27%;
-			display: inline-block;
-			text-align: right;
-		}
-		.input-frame{
-			clear: both;
-			margin-bottom: 25px;
-			position: relative;
-		}
-		form input{
-			height: 30px;
-			width: 330px;
-			margin-left: 10px;
-			background-color: #191919;
-			border: solid 1px #404040;
-			padding-left: 10px;
-			color: #DB7400;
-		}
-		form input:hover{
-			background-color: #262626;
-		}
-		form input:focus{
-			border-color: #DB7400;
-		}
-		form .header{
-			margin: -20px -20px 25px 20px;
-			padding: 10px 10px 10px 20px;
-			position: relative;
-			background-color: #DB7400;
-			border-top-left-radius: 4px;
-			border-top-right-radius: 4px;
-		}
-		form .header h1{
-			line-height: 50px;
-			margin: 0px;
-			padding: 0px;
-			color: #FFF;
-			font-weight: normal;
-		}
-		.actions{
-			text-align: right;
-		}
-		.submit-btn{
-			background-color: #DB7400;
-			border: solid 1px #000;
-			border-radius: 5px;
-			color: #FFF;
-			padding: 10px 20px 10px 20px;
-			cursor: pointer;
-		}
-		.error input{
-			border-color: red;
-		}
-		.error-data{
-			color: red;
-			font-size: 11px;
-			position: absolute;
-			bottom: -15px;
-			left: 30%;
-		}
-	</style>
-	<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script>
-        /*Prevents a form from being submitted*/
-    $(function(){
-    	$('.submit-btn').click(function(event) {
-    		/* Prevent form submission */
-    		event.preventDefault();
-    		var inputs = $('input');
-    		var isError = false;
-    		//Remove old errors
-    		$('.input-frame').removeClass('error');
-    		$('.error-data').remove();
-    		for (var i = 0; i < inputs.length; i++) {
-    			var input = inputs[i];
-    			/*Requiring the data*/
-    			if ($(input).hasClass('required') && !validateRequired($(input).val())) {
-    				addErrorData($(input), "This is a required field");
-    				isError = true;
-    			}
-    			/*Checking the telephone tab only where number should be added in the data field*/
-    			if ($(input).hasClass('number') && !validateNumber($(input).val())) {
-    				addErrorData($(input), "This field can only contain numbers");
-    				isError = true;
-    			}
-    			/*Checking whether a credit card has been inserted*/
-    			if ($(input).hasClass('credit-card') && !validateCreditCard($(input).val())) {
-    				addErrorData($(input), "Invalid credit card number");
-    				isError = true;
-    			}
-    			/*Checking whether a date value has been inserted*/
-    			if ($(input).hasClass('date') && !validateDate($(input).val())) {
-    				addErrorData($(input), "Invalid date provided");
-    				isError = true;
-    			}
-    			/*Checking whether the email is valid*/
-    			if ($(input).hasClass('email') && !validateEmail($(input).val())) {
-    				addErrorData($(input), "Invalid email address provided");
-    				isError = true;
-    			}
-    		}
-    		if (isError === false) {
-    			//No errors, submit the form
-    			$('#webForm').submit();
-    		}
-    	});  		
-    });
-    	
-    function validateRequired(value){
-    	if (value == "") return false;
-    	return true;
-    }
-
-    function validateNumber(value){
-    	if (value != "") {
-    		return !isNaN(parseInt(value, 10)) && isFinite(value);
-    		//isFinite, in case letter is on the end
-    	}
-    }
-    function validateCreditCard(value){
-    	if (value != "") {
-      		return /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/.test(value);
-   		}
-   	return true;
-	}
-
-	function validateDate(value) {
-		if (value != "") {
-			if (/^\d{2}([.\/-])\d{2}\1\d{4}$/.test(value)) {
-         		// Remove leading zeros
-         		value = value.replace(/0*(\d*)/gi,"$1");
-         		var dateValues = value.split(/[\.|\/|-]/);
-         		// Correct the month value as month index starts at 0 now 1 (e.g. 0 = Jan, 1 = Feb)
-         		dateValues[1]--;
-         		var date = new Date(dateValues[2], dateValues[1], dateValues[0]);
-         		if (date.getDate() == dateValues[0] && date.getMonth() == dateValues[1] && date.getFullYear() == dateValues[2]) {
-            		return true;
-         		}
-      		}
-    	return false;
-		}
-      	else {
-      		return true;
-   		}
-	}
-
-	function validateEmail(value) {
-		if (value != "") {
-      		return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i.test(value);
-   		}
-   		return true;
-	}
-   
-    function addErrorData(element, error){
-    	element.parent().addClass('error');
-    	element.after("<div class='error-data'>" + error + "</div>");
-    }
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Chapter 5: Adding Email Address Validation</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
+
 <body>
-	<form action="" id="webForm" method="POST">
-		<div class="header">
-			<h1>Register</h1>
-		</div>
-		<div class="input-frame">
-			<label for="firstName">First Name:</label>
-			<input type="text" id="firstName" name="firstName" class="required">
+    <div class="container">
+        <h1 class="text-center">jQuery 2 Development Cookbook</h1>
+        <h2>Adding Email Address Validation</h2>
+    </div>
+    <form action="" id="webForm" method="POST">
+        <div class="header">
+            <h3>Register</h3>
         </div>
-			<div class="input-frame">
-			<label for="lastName">Last Name:</label>
-			<input type="text" id="lastName" name="lastName" class="required">
-			</div>
-			<div class="input-frame">
-			<label for="email">Email:</label>
-			<input type="text" id="email" name="email" class="required email">
-			</div>
-			<div class="input-frame">
-			<label for="number:">Telephone:</label>
-			<input type="text" id="number" name="number" class="required">
-			</div>
-			<div class="input-frame">
-			<label for="dob">Date of Birth:</label>
-			<input type="text" id="dob" name="dob" class="required date" placeholder="DD/MM/YYYY">
-			</div>
-			<div class="input-frame">
-			<label for="creditCard">Credit Card#</label>
-			<input type="text" id="creditCard" name="creditCard" class="required credit-card">
-			</div>
-			<div class="input-frame">
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" class="required">
-       	</div><div
-       	 class="input-frame">
-			<label for="confirmPassword">Confirm Password:</label>
-			<input type="confirmPassword" id="confirmPassword" name="password" class="required">
-		</div>
-		<div class="actions">
-			<button class="submit-btn">Submit</button>
-		</div>
-	</form>
+        <div class="input-frame">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" class="required">
+        </div>
+        <div class="input-frame">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" class="required">
+        </div>
+        <div class="input-frame">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" class="required email">
+        </div>
+        <div class="input-frame">
+            <label for="number:">Telephone:</label>
+            <input type="text" id="number" name="number" class="required">
+        </div>
+        <div class="input-frame">
+            <label for="dob">Date of Birth:</label>
+            <input type="text" id="dob" name="dob" class="required date" placeholder="DD/MM/YYYY">
+        </div>
+        <div class="input-frame">
+            <label for="creditCard">Credit Card#</label>
+            <input type="text" id="creditCard" name="creditCard" class="required credit-card">
+        </div>
+        <div class="input-frame">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="required">
+        </div>
+        <div class="input-frame">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="confirmPassword" id="confirmPassword" name="password" class="required">
+        </div>
+        <div class="actions">
+            <button class="submit-btn">Submit</button>
+        </div>
+    </form>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../js/script41-47.js"></script>
 </body>
+
 </html>
