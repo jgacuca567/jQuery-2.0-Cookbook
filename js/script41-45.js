@@ -9,6 +9,7 @@
             //Remove old errors
             $('.input-frame').removeClass('error');
             $('.error-data').remove();
+
             for (var i = 0; i < inputs.length; i++) {
                 var input = inputs[i];
 
