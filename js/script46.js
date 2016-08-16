@@ -77,7 +77,7 @@ function doValidation(input) {
     }
 }
 
-if ($('.error-data').length == 0) {
+if ($('.error-data').length === 0) {
     /** No errors, submit the form */
     $('#webForm').submit();
 }
