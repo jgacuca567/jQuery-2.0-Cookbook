@@ -251,15 +251,15 @@ li a:hover {
 form {
   width: 500px;
   padding: 20px;
-  background-color: #333;
+  background-color: #333333;
   border-radius: 5px;
   margin: 10px auto auto auto;
   color: #bdd4de;
-  border: solid 2px #000;
+  border: solid 2px black;
 }
 
 form label {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 30px;
   width: 27%;
   display: inline-block;
@@ -270,15 +270,15 @@ form input {
   height: 30px;
   width: 330px;
   margin-left: 10px;
-  background-color: #191919;
-  border: solid 1px #404040;
+  background-color: #fff;
+  border: solid 1px #cccccc;
   padding-left: 10px;
   color: #422b21;
   border-radius: 5px;
 }
 
 form input:hover {
-  background-color: #262626;
+  background-color: #fff;
 }
 
 form input:focus {
