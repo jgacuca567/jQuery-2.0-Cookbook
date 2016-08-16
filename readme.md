@@ -5,7 +5,7 @@
 	b. Serif - Radley</del>
 3. Import Text Align Class
 4. <del>Restart at Index 30 concerning the search page</del>
-5. Start at Index 40: Chapter 5
+5. Start at Index 47: Chapter 5
 6. Review button designs, see examples from Bootstrap and Foundation 6
 7. Index46: Chapter 5 has a problem, I have sent an issue to Packtpub
 
