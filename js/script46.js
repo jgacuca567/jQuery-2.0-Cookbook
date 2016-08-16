@@ -49,6 +49,7 @@ function addErrorData(element, error) {
     element.after("<div class='error-data'>" + error + "</div>");
 }
 
+var inputs = $('input');
 for (var i = 0; i < inputs.length; i++) {
     var input = inputs[i];
     doValidation(input);
