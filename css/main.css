@@ -1,6 +1,6 @@
+@import url("//fonts.googleapis.com/css?family=Oxygen|Radley");
 /* ----------- iPhone 4 and 4S ----------- */
 /* Portrait and Landscape */
-@import url("//fonts.googleapis.com/css?family=Oxygen|Radley");
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
   h1 {
     font-size: 0.5rem;
@@ -26,7 +26,7 @@ a, h1, h2, h3, h4, h5, h6, label {
   font-family: 'Oxygen', sans-serif;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
@@ -184,63 +184,10 @@ li a:hover {
   right: 60px;
 }
 
-form {
-  width: 500px;
-  padding: 20px;
-  background-color: #333;
-  border-radius: 5px;
-  margin: 10px auto auto auto;
-  color: #bdd4de;
-  border: solid 2px #000;
-}
-
-form label {
-  font-size: 14px;
-  line-height: 30px;
-  width: 27%;
-  display: inline-block;
-  text-align: right;
-}
-
 .input-frame {
   clear: both;
   margin-bottom: 25px;
   position: relative;
-}
-
-form input {
-  height: 30px;
-  width: 330px;
-  margin-left: 10px;
-  background-color: #191919;
-  border: solid 1px #404040;
-  padding-left: 10px;
-  color: #DB7400;
-}
-
-form input:hover {
-  background-color: #262626;
-}
-
-form input:focus {
-  border-color: #DB7400;
-}
-
-form .header {
-  margin: -20px -20px 20px;
-  padding: 10px 10px 10px 20px;
-  position: relative;
-  background-color: #ff7740;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
-
-form .header h1 {
-  line-height: 50px;
-  margin: 0px;
-  padding: 0px;
-  color: #FFF;
-  font-weight: normal;
 }
 
 .actions {
@@ -259,11 +206,35 @@ form .header h1 {
   left: 30%;
 }
 
+.password-strength {
+  position: absolute;
+  width: 150px;
+  height: 20px;
+  left: 69%;
+  top: 35px;
+  line-height: 20px;
+  border: solid 1px black;
+}
+
+.password-strength .inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.password-strength .text {
+  font-size: 11px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
 /** Text Align */
 .submit-btn {
-  border: solid 1px #000;
+  border: solid 1px black;
   border-radius: 10px;
-  color: #FFF;
+  color: #fff;
   padding: 10px 20px 10px 20px;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -273,8 +244,62 @@ form .header h1 {
 }
 
 .submit-btn:hover {
-  background-color: #FFF;
+  background-color: #fff;
   color: #ff7740;
+}
+
+form {
+  width: 500px;
+  padding: 20px;
+  background-color: #333333;
+  border-radius: 5px;
+  margin: 10px auto auto auto;
+  color: #bdd4de;
+  border: solid 2px black;
+}
+
+form label {
+  font-size: 16px;
+  line-height: 30px;
+  width: 27%;
+  display: inline-block;
+  text-align: right;
+}
+
+form input {
+  height: 30px;
+  width: 330px;
+  margin-left: 10px;
+  background-color: #fff;
+  border: solid 1px #cccccc;
+  padding-left: 10px;
+  color: #422b21;
+  border-radius: 5px;
+}
+
+form input:hover {
+  background-color: #fff;
+}
+
+form input:focus {
+  border-color: #422b21;
+}
+
+form .header {
+  margin: -20px -20px 20px;
+  padding: 10px 10px 10px 20px;
+  position: relative;
+  background-color: #ff7740;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+form .header h1 {
+  line-height: 50px;
+  margin: 0px;
+  padding: 0px;
+  color: #FFF;
+  font-weight: normal;
 }
 
 body, button, li {

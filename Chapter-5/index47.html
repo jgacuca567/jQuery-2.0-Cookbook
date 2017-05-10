@@ -1,107 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Chapter 5 Form Handling</title>
-	<link rel="stylesheet" href="../css/main.css">		<style>
-		@import url(http://fonts.googleapis.com/css?family=Ubuntu);
-		body{
-			background-color: #FFF;
-			font-family: 'Ubuntu', sans-serif;
-		}
-		form{
-			width: 500px;
-			padding: 20px;
-			background-color: #333;
-			border-radius: 5px;
-			margin: 10px auto auto auto;
-			color: #747474;
-			border: solid 2px #000;
-		}
-		form label{
-			font-size: 14px;
-			line-height: 30px;
-			width: 27%;
-			display: inline-block;
-			text-align: right;
-		}
-		.input-frame{
-			clear: both;
-			margin-bottom: 25px;
-			position: relative;
-		}
-		form input{
-			height: 30px;
-			width: 330px;
-			margin-left: 10px;
-			background-color: #191919;
-			border: solid 1px #404040;
-			padding-left: 10px;
-			color: #DB7400;
-		}
-		form input:hover{
-			background-color: #262626;
-		}
-		form input:focus{
-			border-color: #DB7400;
-		}
-		form .header{
-			margin: -20px -20px 25px 20px;
-			padding: 10px 10px 10px 20px;
-			position: relative;
-			background-color: #DB7400;
-			border-top-left-radius: 4px;
-			border-top-right-radius: 4px;
-		}
-		form .header h1{
-			line-height: 50px;
-			margin: 0px;
-			padding: 0px;
-			color: #FFF;
-			font-weight: normal;
-		}
-		.actions{
-			text-align: right;
-		}
-		.submit-btn{
-			background-color: #DB7400;
-			border: solid 1px #000;
-			border-radius: 5px;
-			color: #FFF;
-			padding: 10px 20px 10px 20px;
-			cursor: pointer;
-		}
-	</style>
-	<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Chapter 5</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">jQuery 2 Development Cookbook</h1>
+        <h2>Adding a password strength validator</h2>
+    </div>
+    <form method="POST" id="webForm">
+        <div class="header">
+            <h3>Register</h3>
+        </div>
+        <div class="input-frame">
+            <label for="password">Password</label>
+            <input name="password" type="password" id="password" class="required">
+        </div>
+        <div class="input-frame">
+            <label for="confirmPassword">Confirm Password</label>
+            <input name="confirmPassword" type="password" id="confirmPassword" class="required">
+        </div>
+        <div class="actions">
+            <button class="submit-btn">Submit</button>
+        </div>
+    </form>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script>
-    $(function(){
-    	$('.username').on('keypress', function(event) {
-    		/*Get key press character code*/
-    		var key = String.fromCharCode(event.which);
-    		if (/[^a-zA-Z\d\s:]/.test(key)) {
-    			event.preventDefault();
-    			return false;
-    		}
-    	});
+    jQuery(document).ready(function($) {
+        $('.username').on('keypress', function(event) {
+            /*Get key press character code*/
+            var key = String.fromCharCode(event.which);
+            if (/[^a-zA-Z\d\s:]/.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
     });
     </script>
-</head>
-<body>
-	<form method="POST" id="webForm">
-		<div class="header">
-			<h1>Register</h1>
-		</div>
-		<div class="input-frame">
-			<label for="username">Username</label>
-			<input name="username" type="text" id="username" class="username">
-		</div>
-		<div class="input-frame">
-			<label for="password">Password</label>
-			<input name="password" type="text" id="password" class="required">
-		</div>
-		<div class="actions">
-			<button class="submit-btn">Submit</button>
-		</div>
-	</form>
 </body>
+
 </html>
