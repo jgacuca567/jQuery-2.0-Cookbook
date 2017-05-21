@@ -1,6 +1,6 @@
 {
   "name": "jquery-cookbook",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jgacuca567/jQuery-2.0-Cookbook.git"
@@ -19,18 +19,12 @@
     "grunt-sass": "^1.2.1",
     "jshint-stylish": "^2.2.1",
     "load-grunt-tasks": "^3.5.2",
-    "node-sass": "^3.8.0"
+    "node-sass": "^3.13.1"
   },
   "dependencies": {
-<<<<<<< HEAD
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",
-=======
-    "font-awesome": "^4.6.3",
-    "jquery": "^3.1.1",
-    "jquery-ui": "^1.10.5",
->>>>>>> origin/master
     "normalize-scss": "^3.0.3"
   },
   "description": "jQuery 2.0 Cookbook",
