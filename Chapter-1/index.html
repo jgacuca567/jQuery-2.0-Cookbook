@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Chapter 1 - Selecting Elements with jQuery</title>
-	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Chapter 1 - Selecting Elements with jQuery</title>
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script>
-    $(function(){
-    	var content = $('#content'); //Select the content div
-    	var span = $('.span-element'); //Select the span element
-    	var listelements = $('li'); //Select all the list elements
-    	/*List all the elements in the page*/
-    	var i = 1;
-    	listelements.each(function() {
-    		console.log('Loop: ' + i);
-    	});
-    });
+        $(function() {
+            var content = $('#content'); //Select the content div
+            var span = $('.span-element'); //Select the span element
+            var listelements = $('li'); //Select all the list elements
+            /*List all the elements in the page*/
+            var i = 1;
+            listelements.each(function() {
+                console.log('Loop: ' + i);
+            });
+        });
     </script>
     <link rel="stylesheet" href="../css/main.css">
 </head>
+
 <body>
-	<div class="division-container">Some text within a div which has a class</div>
-	<div id="content">Some text within a div which has an ID attribute</div>
-	<a href="#">A link</a>
-	<a href="#" rel="dofollow">A second link</a>
-	<ul class="info-list">
-		<li>List item 1</li>
-		<li>List item 2</li>
-		<li>List item 3</li>
-	</ul>
-	<button>Button 1</button>
-	<span class="span-element">Span 1</span>
+    <div class="division-container">Some text within a div which has a class</div>
+    <div id="content">Some text within a div which has an ID attribute</div>
+    <a href="#">A link</a>
+    <a href="#" rel="dofollow">A second link</a>
+    <ul class="info-list">
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ul>
+    <button>Button 1</button>
+    <span class="span-element">Span 1</span>
 </body>
+
 </html>
