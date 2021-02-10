@@ -25,7 +25,7 @@
         "font-awesome": "^4.7.0",
         "jquery": "^3.2.1",
         "jquery-ui": "^1.12.1",
-        "normalize-scss": "^3.0.3"
+        "normalize-scss": "^7.0.1"
     },
     "description": "jQuery 2.0 Cookbook",
     "bugs": {
