@@ -19,7 +19,7 @@
         "grunt-sass": "^1.2.1",
         "jshint-stylish": "^2.2.1",
         "load-grunt-tasks": "^3.5.2",
-        "node-sass": "^3.13.1"
+        "node-sass": "^5.0.0"
     },
     "dependencies": {
         "font-awesome": "^4.7.0",
