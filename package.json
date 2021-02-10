@@ -1,45 +1,45 @@
 {
-  "name": "jquery-cookbook",
-  "version": "0.0.5",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jgacuca567/jQuery-2.0-Cookbook.git"
-  },
-  "devDependencies": {
-    "autoprefixer": "^6.7.7",
-    "grunt": "~0.4.5",
-    "grunt-autoupdate": "0.0.1",
-    "grunt-contrib-compass": "^1.0.4",
-    "grunt-contrib-jshint": "^0.11.3",
-    "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-force-task": "^1.0.0",
-    "grunt-openport": "^1.0.0",
-    "grunt-postcss": "^0.5.5",
-    "grunt-sass": "^1.2.1",
-    "jshint-stylish": "^2.2.1",
-    "load-grunt-tasks": "^3.5.2",
-    "node-sass": "^3.13.1"
-  },
-  "dependencies": {
-    "font-awesome": "^4.7.0",
-    "jquery": "^3.2.1",
-    "jquery-ui": "^1.12.1",
-    "normalize-scss": "^3.0.3"
-  },
-  "description": "jQuery 2.0 Cookbook",
-  "bugs": {
-    "url": "https://github.com/jgacuca567/jQuery-2.0-Cookbook/issues"
-  },
-  "homepage": "https://github.com/jgacuca567/jQuery-2.0-Cookbook#readme",
-  "main": "gruntfile.js",
-  "scripts": {
-    "test": "mocha"
-  },
-  "keywords": [
-    "Grunt",
-    "NodeJS"
-  ],
-  "author": "JamesVanWaza <jgacuca@dosbranding.com>",
-  "license": "MIT"
+    "name": "jquery-cookbook",
+    "version": "1.0.6",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JamesVanWaza/jQuery-2.0-Cookbook.git"
+    },
+    "devDependencies": {
+        "autoprefixer": "^6.7.7",
+        "grunt": "~0.4.5",
+        "grunt-autoupdate": "0.0.1",
+        "grunt-contrib-compass": "^1.0.4",
+        "grunt-contrib-jshint": "^0.11.3",
+        "grunt-contrib-sass": "^1.0.0",
+        "grunt-contrib-watch": "~0.6.1",
+        "grunt-force-task": "^1.0.0",
+        "grunt-openport": "^1.0.0",
+        "grunt-postcss": "^0.5.5",
+        "grunt-sass": "^1.2.1",
+        "jshint-stylish": "^2.2.1",
+        "load-grunt-tasks": "^3.5.2",
+        "node-sass": "^3.13.1"
+    },
+    "dependencies": {
+        "font-awesome": "^4.7.0",
+        "jquery": "^3.2.1",
+        "jquery-ui": "^1.12.1",
+        "normalize-scss": "^3.0.3"
+    },
+    "description": "jQuery 2.0 Cookbook",
+    "bugs": {
+        "url": "https://github.com/JamesVanWaza/jQuery-2.0-Cookbook/issues"
+    },
+    "homepage": "https://github.com/JamesVanWaza/jQuery-2.0-Cookbook#readme",
+    "main": "gruntfile.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "keywords": [
+        "Grunt",
+        "NodeJS"
+    ],
+    "author": "JamesVanWaza <jgacuca@dosbranding.com>",
+    "license": "MIT"
 }
