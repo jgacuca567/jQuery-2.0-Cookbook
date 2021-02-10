@@ -13,7 +13,7 @@
         "grunt-contrib-jshint": "^0.11.3",
         "grunt-contrib-sass": "^1.0.0",
         "grunt-contrib-watch": "~0.6.1",
-        "grunt-force-task": "^1.0.0",
+        "grunt-force-task": "^3.0.0",
         "grunt-openport": "^1.0.0",
         "grunt-postcss": "^0.5.5",
         "grunt-sass": "^1.2.1",
