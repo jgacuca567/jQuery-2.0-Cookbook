@@ -1,20 +1,21 @@
 {
     "name": "jquery-cookbook",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/JamesVanWaza/jQuery-2.0-Cookbook.git"
     },
     "devDependencies": {
-        "autoprefixer": "^6.7.7",
-        "node-sass": "^5.0.0"
+        "autoprefixer": "^10.2.6",
+        "node-sass": "^6.0.0",
+        "postcss": "^8.3.0"
     },
     "dependencies": {
         "fontawesome": "^5.6.3",
         "jquery": "^3.6.0",
         "jquery-ui": "^1.12.1",
         "normalize-scss": "^7.0.1",
-        "webpack": "^5.36.2"
+        "webpack": "^5.38.1"
     },
     "description": "jQuery 2.0 Cookbook",
     "bugs": {
@@ -28,6 +29,6 @@
     "keywords": [
         "NodeJS"
     ],
-    "author": "JamesVanWaza <jgacuca@dosbranding.com>",
+    "author": "JamesVanWaza <info@dosbranding.com>",
     "license": "MIT"
 }
