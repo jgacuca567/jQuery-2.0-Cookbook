@@ -15,7 +15,7 @@
         "jquery": "^3.6.0",
         "jquery-ui": "^1.12.1",
         "normalize-scss": "^7.0.1",
-        "webpack": "^5.38.1"
+        "webpack": "^5.39.1"
     },
     "description": "jQuery 2.0 Cookbook",
     "bugs": {
